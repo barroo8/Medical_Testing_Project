@@ -9,11 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
+using MedicalPJ;
+
 
 namespace MedicalPJ
 {
     public partial class RegisterForm : Form
     {
+        private PrivateFontCollection pfc = new PrivateFontCollection();
+
         public RegisterForm()
         {
             InitializeComponent();
@@ -25,10 +29,16 @@ namespace MedicalPJ
             InitCustomLabelFont();
         }
 
+        private void registerclickBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Custom Font function
         private void InitCustomLabelFont()
         {
             //Create your private font collection object.
-            PrivateFontCollection pfc = new PrivateFontCollection();
+            //PrivateFontCollection pfc = new PrivateFontCollection();
 
             //Select your font from the resources.
             int fontLength = Properties.Resources.SecularOne_Regular.Length;
@@ -65,12 +75,12 @@ namespace MedicalPJ
 
             registerclickBtn.Font = new Font(pfc.Families[0], 18);
             registerclickBtn.Text = "הרשמה למערכת";
-
         }
 
-        private void registerclickBtn_Click(object sender, EventArgs e)
+        //Dispose pfc when closed
+        private void RegisterForm_FormClosing(Object sender, FormClosingEventArgs e) 
         {
-
+            pfc.Dispose();
         }
 
         //ESC exit button function block

@@ -1,0 +1,11 @@
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\bin\x64\Debug\MedicalPJ.exe.config
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\bin\x64\Debug\MedicalPJ.exe
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\bin\x64\Debug\MedicalPJ.pdb
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\x64\Debug\MedicalPJ.csprojAssemblyReference.cache
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\x64\Debug\MedicalPJ.Form1.resources
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\x64\Debug\MedicalPJ.Properties.Resources.resources
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\x64\Debug\MedicalPJ.RegisterForm.resources
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\x64\Debug\MedicalPJ.csproj.GenerateResource.cache
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\x64\Debug\MedicalPJ.csproj.CoreCompileInputs.cache
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\x64\Debug\MedicalPJ.exe
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\x64\Debug\MedicalPJ.pdb

@@ -82,6 +82,7 @@
             this.loginBtn.Size = new System.Drawing.Size(296, 77);
             this.loginBtn.TabIndex = 2;
             this.loginBtn.Text = "loginBtn";
+            this.loginBtn.UseCompatibleTextRendering = true;
             this.loginBtn.UseVisualStyleBackColor = true;
             // 
             // registerBtn
@@ -94,6 +95,7 @@
             this.registerBtn.Size = new System.Drawing.Size(296, 77);
             this.registerBtn.TabIndex = 3;
             this.registerBtn.Text = "registerBtn";
+            this.registerBtn.UseCompatibleTextRendering = true;
             this.registerBtn.UseVisualStyleBackColor = true;
             this.registerBtn.Click += new System.EventHandler(this.RegisterBtn_Click);
             // 

@@ -9,12 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
-
+using System.Reflection;
+using System.IO;
+using MedicalPJ;
 
 namespace MedicalPJ
 {
     public partial class Form1 : Form
     {
+        private PrivateFontCollection pfc = new PrivateFontCollection();
+
         public Form1()
         {
             InitializeComponent();
@@ -39,20 +43,31 @@ namespace MedicalPJ
             this.passwordTxtBox.Enter += new System.EventHandler(this.passwordTxtBox_Enter);
             passwordTxtBox.ForeColor = Color.Silver;
             loginTxtBox.ForeColor = Color.Silver;
-
-            InitCustomLabelFont();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             this.ActiveControl = headerPic;
+            InitCustomLabelFont();
         }
-
 
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
-            RegisterForm reg = new RegisterForm();
-            reg.ShowDialog();
+            bool restrict = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "הרשמה למערכת")
+                {
+                    restrict = true;
+                    f.BringToFront();
+                    break;
+                }
+            }
+            if (restrict == false)
+            {
+                RegisterForm reg = new RegisterForm();
+                reg.Show();
+            }
         }
 
         //ESC exit button function block
@@ -76,8 +91,9 @@ namespace MedicalPJ
         //Custom Font function
         private void InitCustomLabelFont()
         {
+
             //Create your private font collection object.
-            PrivateFontCollection pfc = new PrivateFontCollection();
+            //PrivateFontCollection pfc = new PrivateFontCollection();
 
             //Select your font from the resources.
             int fontLength = Properties.Resources.SecularOne_Regular.Length;
@@ -94,6 +110,7 @@ namespace MedicalPJ
             // pass the font to the font collection
             pfc.AddMemoryFont(data, fontLength);
 
+
             headerLbl.Font = new Font(pfc.Families[0], 20);
             headerLbl.Text = "פרויקט מסכם בקורס בדיקות ואיכות תוכנה";
 
@@ -108,6 +125,11 @@ namespace MedicalPJ
 
             closeescLbl.Font = new Font(pfc.Families[0], 10);
             closeescLbl.Text = "כדי לסגור את המסך בכל עת ESC ניתן ללחוץ על **";
+        }
+        //Dispose pfc when closed
+        private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            pfc.Dispose();
         }
 
         //Login & Register block

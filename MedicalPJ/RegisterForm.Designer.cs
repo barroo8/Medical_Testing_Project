@@ -51,9 +51,10 @@
             this.usernameLbl.BackColor = System.Drawing.Color.Transparent;
             this.usernameLbl.Location = new System.Drawing.Point(595, 102);
             this.usernameLbl.Name = "usernameLbl";
-            this.usernameLbl.Size = new System.Drawing.Size(101, 20);
+            this.usernameLbl.Size = new System.Drawing.Size(101, 24);
             this.usernameLbl.TabIndex = 0;
             this.usernameLbl.Text = "usernameLbl";
+            this.usernameLbl.UseCompatibleTextRendering = true;
             // 
             // idLbl
             // 
@@ -61,9 +62,10 @@
             this.idLbl.BackColor = System.Drawing.Color.Transparent;
             this.idLbl.Location = new System.Drawing.Point(595, 355);
             this.idLbl.Name = "idLbl";
-            this.idLbl.Size = new System.Drawing.Size(42, 20);
+            this.idLbl.Size = new System.Drawing.Size(41, 24);
             this.idLbl.TabIndex = 1;
             this.idLbl.Text = "idLbl";
+            this.idLbl.UseCompatibleTextRendering = true;
             // 
             // passwordLbl
             // 
@@ -71,9 +73,10 @@
             this.passwordLbl.BackColor = System.Drawing.Color.Transparent;
             this.passwordLbl.Location = new System.Drawing.Point(595, 238);
             this.passwordLbl.Name = "passwordLbl";
-            this.passwordLbl.Size = new System.Drawing.Size(98, 20);
+            this.passwordLbl.Size = new System.Drawing.Size(98, 24);
             this.passwordLbl.TabIndex = 2;
             this.passwordLbl.Text = "passwordLbl";
+            this.passwordLbl.UseCompatibleTextRendering = true;
             // 
             // usercondiLbl
             // 
@@ -149,6 +152,7 @@
             this.registerclickBtn.Size = new System.Drawing.Size(315, 71);
             this.registerclickBtn.TabIndex = 10;
             this.registerclickBtn.Text = "registerclickBtn";
+            this.registerclickBtn.UseCompatibleTextRendering = true;
             this.registerclickBtn.UseVisualStyleBackColor = true;
             this.registerclickBtn.Click += new System.EventHandler(this.registerclickBtn_Click);
             // 
