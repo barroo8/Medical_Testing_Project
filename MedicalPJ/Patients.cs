@@ -130,6 +130,7 @@ namespace MedicalPJ
             }
         }
         public int[] Diagnosis()
+        //return array with diagnos [wbc,neut,lymph,RBC,hct,Urea,hb,Crtn,iron,hdl,ap]
         {
             int[] first_diagnos = new int[11];// each one 0 - ok | 1 - high | -1 - low
             //wbc
@@ -199,7 +200,7 @@ namespace MedicalPJ
                 first_diagnos[4] = 0;
             }
             //Urea
-            if ((east == true && urea > 47.3) || (east == true && urea > 43))
+            if ((east == true && urea > 47.3) || (east == false && urea > 43))
             {
                 first_diagnos[5] = 1;
             }
@@ -252,12 +253,12 @@ namespace MedicalPJ
                 first_diagnos[8] = 0;
             }
             //hdl
-            if((gender == true && ethiopian == true && hdl > (62*0.2))||(gender == false && ethiopian == true && hdl > (82 * 0.2))
+            if((gender == true && ethiopian == true && hdl > (62*1.2))||(gender == false && ethiopian == true && hdl > (82 * 1.2))
                 || (gender == true && ethiopian == false && hdl > 62 ) || (gender == false && ethiopian == false && hdl > 82))
             {
                 first_diagnos[9] = 1;
             }
-            else if ((gender == true && ethiopian == true && hdl < (29 * 0.2)) || (gender == false && ethiopian == true && hdl < (34 * 0.2))
+            else if ((gender == true && ethiopian == true && hdl < (29 * 1.2)) || (gender == false && ethiopian == true && hdl < (34 * 1.2))
                 || (gender == true && ethiopian == false && hdl < 29) || (gender == false && ethiopian == false && hdl < 34))
             {
                 first_diagnos[9] = -1;
@@ -285,6 +286,40 @@ namespace MedicalPJ
         {
             return float.Parse(value ) * 100;
         }
-        
+        public Question[] questionGeneratior(int [] diagnos)
+        //  [wbc, neut, lymph, RBC, hct, Urea, hb, Crtn, iron, hdl, ap]
+        //  [0,     1,     2,    3,   4,   5,   6,   7,    8,   9,  10]
+        {
+            Question[] question_lst = new Question[6];
+            int j = 0;
+            if ( diagnos[0] == 1)
+            {
+                question_lst[j] = new Question("?האם קיימת מחלת חום", "wbc : +");
+                j++;
+            }
+            if (diagnos[3] == 1)
+            {
+                question_lst[j] = new Question("האם את.ה מעשן או חולה במחלת ריאות", "rbc : +");
+                j++;
+            }
+            if (diagnos[4] == 1)
+            {
+                question_lst[j] = new Question("האם את.ה מעשן ", "hct : +");
+                j++;
+            }
+            if ( diagnos[5] == 1)
+            {
+                question_lst[j] = new Question("האם את.ה בדיאטה עתירת חלבונים ", "urea : +");
+                j++;
+            }
+            if ( diagnos[5] == -1)
+            {
+                question_lst[j] = new Question("האם את.ה בדיאטה דלת חלבון ", "urea : -");
+                j++;
+                question_lst[j] = new Question("האם את בהריון ", "urea : -");
+                j++;
+            }
+            return question_lst;
+        }
     }
 }
