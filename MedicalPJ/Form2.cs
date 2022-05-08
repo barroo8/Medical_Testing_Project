@@ -16,22 +16,25 @@ namespace MedicalPJ
 {
     public partial class Form2 : Form
     {
+        Patient alex = new Patient();
         public Form2()
         {
             InitializeComponent();
+            
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
             
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             WorkBook workbook = WorkBook.Load("Patients.xlsx");
             var sheet = workbook.GetWorkSheet("sheet");
             int i = 0;
-            Patient alex = new Patient();
+            
             int raw_index = 1;
             string cell_val = "1";
             while(cell_val!= "")
@@ -110,7 +113,23 @@ namespace MedicalPJ
             label30.Text = analsys(analasis[9]);
             label29.Text = analsys(analasis[10]);
             Question[] question_lst = alex.questionGeneratior(analasis);
+            i = 0;
+            //while (question_lst[i] != null)
+            //{
+            //label40.Text = question_lst[0].getQuestion();
+            //label33.Text = question_lst[1].getQuestion();
+            //if (question_lst[2] != null)
+            //{
+            //    label32.Text = question_lst[2].getQuestion();
+            //    label31.Text = question_lst[3].getQuestion();
+            //    label30.Text = question_lst[4].getQuestion();
+            //    label29.Text = question_lst[5].getQuestion();
+            //}
+            label1_Click(sender,e)  ;
             
+
+            //}
+
         }
         private string analsys(int num)
         {
@@ -121,9 +140,13 @@ namespace MedicalPJ
             else
                 return "נמוך";
         }
-        private void label1_Click(object sender, EventArgs e)
+        private void answers(Question[] lst)
         {
 
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+            label1.Text = "shpih";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -193,6 +216,47 @@ namespace MedicalPJ
         private void label18_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        int countclick = 0;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Question[] question_lst = alex.questionGeneratior(alex.Diagnosis());
+            
+            button2.Text = "הגש";
+            if (question_lst[countclick] == null)
+            {
+                button2.Text = "לעמוד הבא";
+                button2.Enabled = false;
+                
+            }
+            else if (countclick == 0)
+            {
+                label40.Text = question_lst[countclick].getQuestion();
+                countclick++;
+            }
+            else{
+                
+
+
+                if (checkBox8.Checked == true)
+                {
+                    question_lst[countclick - 1].setAnswer(true);
+                    checkBox8.Checked = false;
+                    countclick++;
+                }
+                if (checkBox7.Checked == true)
+                {
+                    question_lst[countclick - 1].setAnswer(false);
+                    checkBox7.Checked = false;
+                    countclick++;
+                }
+                label40.Text = question_lst[countclick-1].getQuestion();
+            }
         }
     }
 }

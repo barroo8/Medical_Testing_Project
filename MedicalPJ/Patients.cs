@@ -321,5 +321,9 @@ namespace MedicalPJ
             }
             return question_lst;
         }
+        //public string[] FinalDiagnosis(int[] diagnos, Question [] questions)
+        //{
+        //   // string [] finaldiagnosis = new string
+        //}
     }
 }

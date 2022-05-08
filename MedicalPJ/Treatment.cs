@@ -8,6 +8,6 @@ namespace MedicalPJ
 {
     class Treatment
     {
-        string 
+       
     }
 }
