@@ -17,7 +17,8 @@ namespace MedicalPJ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1()); //this is where it crashes
+            //Application.Run(new Form1());
+            Application.Run(new Dashboard());
         }
 
     }
