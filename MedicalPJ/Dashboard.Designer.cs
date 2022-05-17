@@ -77,7 +77,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(268, 57);
             this.button2.TabIndex = 1;
-            this.button2.Text = "REPORT";
+            this.button2.Text = "DATA FROM COMPUTER";
             this.button2.UseVisualStyleBackColor = false;
             // 
             // button1
@@ -93,8 +93,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(268, 57);
             this.button1.TabIndex = 0;
-            this.button1.Text = "DASHBOARD";
+            this.button1.Text = "DATA FROM INPUT";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panelheader
             // 
@@ -115,7 +116,7 @@
             this.closeBtn.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeBtn.ForeColor = System.Drawing.Color.White;
             this.closeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.closeBtn.Location = new System.Drawing.Point(1295, 0);
+            this.closeBtn.Location = new System.Drawing.Point(1252, 0);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(46, 46);
             this.closeBtn.TabIndex = 2;
