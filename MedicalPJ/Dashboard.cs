@@ -16,6 +16,8 @@ namespace MedicalPJ
         {
             InitializeComponent();
             CenterToScreen();
+
+            closeBtn.Left = (this.ClientSize.Width - closeBtn.Width);
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -38,6 +40,11 @@ namespace MedicalPJ
         private void button1_Click(object sender, EventArgs e)
         {
             loadform(new Form2());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
