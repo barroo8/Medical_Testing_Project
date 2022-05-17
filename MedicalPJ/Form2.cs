@@ -323,11 +323,6 @@ namespace MedicalPJ
 
         }
 
-/*        private bool isCellEmpty()
-        {
-            if (nameTxtBox.Text == "" || lastnameTxtBox.Text == "" || nameTxtBox.Text == "" ||)
-        }*/
-
         int countclick = 0;
 
         private void nameTxtBox_Leave(object sender, EventArgs e)

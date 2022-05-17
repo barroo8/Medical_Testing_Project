@@ -41,6 +41,9 @@
             this.registerclickBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.errorLbl = new System.Windows.Forms.Label();
+            this.errorLbl2 = new System.Windows.Forms.Label();
+            this.errorLbl3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -125,6 +128,8 @@
             this.textBox1.Size = new System.Drawing.Size(460, 26);
             this.textBox1.TabIndex = 7;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // textBox2
             // 
@@ -133,6 +138,8 @@
             this.textBox2.Size = new System.Drawing.Size(460, 26);
             this.textBox2.TabIndex = 8;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // textBox3
             // 
@@ -141,6 +148,8 @@
             this.textBox3.Size = new System.Drawing.Size(460, 26);
             this.textBox3.TabIndex = 9;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.Enter += new System.EventHandler(this.textBox3_Enter);
+            this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
             // registerclickBtn
             // 
@@ -178,12 +187,54 @@
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
             // 
+            // errorLbl
+            // 
+            this.errorLbl.AutoSize = true;
+            this.errorLbl.BackColor = System.Drawing.Color.Transparent;
+            this.errorLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.errorLbl.Location = new System.Drawing.Point(302, 85);
+            this.errorLbl.Name = "errorLbl";
+            this.errorLbl.Size = new System.Drawing.Size(65, 24);
+            this.errorLbl.TabIndex = 13;
+            this.errorLbl.Text = "errorLbl";
+            this.errorLbl.UseCompatibleTextRendering = true;
+            this.errorLbl.Visible = false;
+            // 
+            // errorLbl2
+            // 
+            this.errorLbl2.AutoSize = true;
+            this.errorLbl2.BackColor = System.Drawing.Color.Transparent;
+            this.errorLbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.errorLbl2.Location = new System.Drawing.Point(313, 216);
+            this.errorLbl2.Name = "errorLbl2";
+            this.errorLbl2.Size = new System.Drawing.Size(75, 24);
+            this.errorLbl2.TabIndex = 14;
+            this.errorLbl2.Text = "errorLbl2";
+            this.errorLbl2.UseCompatibleTextRendering = true;
+            this.errorLbl2.Visible = false;
+            // 
+            // errorLbl3
+            // 
+            this.errorLbl3.AutoSize = true;
+            this.errorLbl3.BackColor = System.Drawing.Color.Transparent;
+            this.errorLbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.errorLbl3.Location = new System.Drawing.Point(196, 332);
+            this.errorLbl3.Name = "errorLbl3";
+            this.errorLbl3.Size = new System.Drawing.Size(75, 24);
+            this.errorLbl3.TabIndex = 15;
+            this.errorLbl3.Text = "errorLbl3";
+            this.errorLbl3.UseCompatibleTextRendering = true;
+            this.errorLbl3.Visible = false;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MedicalPJ.Properties.Resources.bakground;
             this.ClientSize = new System.Drawing.Size(800, 550);
+            this.Controls.Add(this.errorLbl3);
+            this.Controls.Add(this.errorLbl2);
+            this.Controls.Add(this.errorLbl);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.registerclickBtn);
@@ -224,5 +275,8 @@
         private System.Windows.Forms.Button registerclickBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label errorLbl;
+        private System.Windows.Forms.Label errorLbl2;
+        private System.Windows.Forms.Label errorLbl3;
     }
 }

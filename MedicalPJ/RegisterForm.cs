@@ -27,6 +27,9 @@ namespace MedicalPJ
         private void RegisterForm_Load(object sender, EventArgs e)
         {
             InitCustomLabelFont();
+            errorLbl.ForeColor = Color.DarkRed;
+            errorLbl2.ForeColor = Color.DarkRed;
+            errorLbl3.ForeColor = Color.DarkRed;
         }
 
         private void registerclickBtn_Click(object sender, EventArgs e)
@@ -59,7 +62,7 @@ namespace MedicalPJ
             usernameLbl.Text = ":שם משתמש";
 
             usercondiLbl.Font = new Font(pfc.Families[0], 10);
-            usercondiLbl.Text = "שם משתמש חייב להכין בין 6 ל8 תווים";
+            usercondiLbl.Text = "שם משתמש חייב להכיל בין 6 ל8 תווים";
             usercondiLbl2.Font = new Font(pfc.Families[0], 10);
             usercondiLbl2.Text = "לכל היותר 2 ספרות וכל השאר אותיות באנגלית";
             passcondiLbl.Font = new Font(pfc.Families[0], 10);
@@ -99,6 +102,107 @@ namespace MedicalPJ
                 return true;
             }
             return base.ProcessDialogKey(keyData);
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length < 6 || textBox1.Text.Length > 8)
+            {
+                errorLbl.Text = "שם משתמש חייב להכיל בין 6 ל8 תווים";
+                textBox1.Text = "";
+                errorLbl.Visible = true;
+                return;
+            }
+            int nums = 0;
+            foreach (char c in textBox1.Text)
+            {
+                if (c > 47 && c < 58)
+                {
+                    nums++;
+                    if (nums > 2)
+                    {
+                        errorLbl.Text = "לכל היותר 2 ספרות וכל השאר אותיות באנגלית";
+                        textBox1.Text = "";
+                        errorLbl.Visible = true;
+                        break;
+                    }
+                }
+                else if (!char.IsLetter(c))
+                {
+                    errorLbl.Text = "לכל היותר 2 ספרות וכל השאר אותיות באנגלית";
+                    textBox1.Text = "";
+                    errorLbl.Visible = true;
+                    break;
+                }
+            }
+
+        }
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            errorLbl.Visible = false;
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text.Length < 8 || textBox2.Text.Length > 10)
+            {
+                errorLbl2.Text = "סיסמא חייבת להכיל בין 8 ל10 תווים";
+                textBox2.Text = "";
+                errorLbl2.Visible = true;
+                return;
+            }
+            int p1 = 0, p2 = 0;
+            foreach (char c in textBox2.Text)
+            {
+                if (char.IsDigit(c))
+                    p1++;
+                else if (char.IsLetter(c))
+                    p2++;
+            }
+            if (!HasSpecialChars(textBox2.Text) || p1==0 || p2==0)
+            {
+                errorLbl2.Text = "(...#,!,$) חייב להכיל לפחות אות, ספרה ותו מיוחד";
+                textBox2.Text = "";
+                errorLbl2.Visible = true;
+                return;
+            }
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            errorLbl2.Visible = false;
+            textBox2.PasswordChar = '*';
+        }
+
+        private bool HasSpecialChars(string yourString)
+        {
+            return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
+        }
+
+        private void textBox3_Leave(object sender, EventArgs e)
+        {
+            if (textBox3.Text.Length != 9)
+            {
+                errorLbl3.Text = "תעודת זהות חייבת להכיל 9 ספרות כולל ספרת ביקורת";
+                textBox3.Text = "";
+                errorLbl3.Visible = true;
+                return;
+            }
+            foreach (char c in textBox3.Text)
+            {
+                if (!char.IsDigit(c))
+                {
+                    errorLbl3.Text = "תעודת זהות חייבת להכיל 9 ספרות כולל ספרת ביקורת";
+                    textBox3.Text = "";
+                    errorLbl3.Visible = true;
+                    break;
+                }
+            }
+        }
+
+        private void textBox3_Enter(object sender, EventArgs e)
+        {
+            errorLbl3.Visible = false;
         }
     }
 }
