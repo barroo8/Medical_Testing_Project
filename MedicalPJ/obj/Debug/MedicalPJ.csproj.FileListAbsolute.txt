@@ -16,3 +16,4 @@ C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\bi
 C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.csproj.CopyComplete
 C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.QuestionForm.resources
 C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.Form3.resources
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.ChartsForm.resources
