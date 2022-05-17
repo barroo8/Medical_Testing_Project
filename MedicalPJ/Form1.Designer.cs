@@ -54,10 +54,10 @@
             // 
             this.headerPic.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.headerPic.Image = global::MedicalPJ.Properties.Resources.WhatsApp_Image_2022_05_02_at_19_53_18;
-            this.headerPic.Location = new System.Drawing.Point(365, 90);
-            this.headerPic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.headerPic.Location = new System.Drawing.Point(274, 73);
+            this.headerPic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.headerPic.Name = "headerPic";
-            this.headerPic.Size = new System.Drawing.Size(392, 224);
+            this.headerPic.Size = new System.Drawing.Size(294, 182);
             this.headerPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.headerPic.TabIndex = 0;
             this.headerPic.TabStop = false;
@@ -66,9 +66,10 @@
             // 
             this.headerLbl.AutoSize = true;
             this.headerLbl.BackColor = System.Drawing.Color.Transparent;
-            this.headerLbl.Location = new System.Drawing.Point(238, 12);
+            this.headerLbl.Location = new System.Drawing.Point(179, 10);
+            this.headerLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.headerLbl.Name = "headerLbl";
-            this.headerLbl.Size = new System.Drawing.Size(64, 20);
+            this.headerLbl.Size = new System.Drawing.Size(55, 17);
             this.headerLbl.TabIndex = 1;
             this.headerLbl.Text = "headerLbl";
             this.headerLbl.UseCompatibleTextRendering = true;
@@ -78,10 +79,10 @@
             this.loginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.loginBtn.Image = ((System.Drawing.Image)(resources.GetObject("loginBtn.Image")));
-            this.loginBtn.Location = new System.Drawing.Point(582, 471);
-            this.loginBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.loginBtn.Location = new System.Drawing.Point(437, 383);
+            this.loginBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(263, 62);
+            this.loginBtn.Size = new System.Drawing.Size(197, 50);
             this.loginBtn.TabIndex = 2;
             this.loginBtn.Text = "loginBtn";
             this.loginBtn.UseCompatibleTextRendering = true;
@@ -93,10 +94,10 @@
             this.registerBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.registerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.registerBtn.Image = ((System.Drawing.Image)(resources.GetObject("registerBtn.Image")));
-            this.registerBtn.Location = new System.Drawing.Point(301, 471);
-            this.registerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.registerBtn.Location = new System.Drawing.Point(226, 383);
+            this.registerBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.registerBtn.Name = "registerBtn";
-            this.registerBtn.Size = new System.Drawing.Size(263, 62);
+            this.registerBtn.Size = new System.Drawing.Size(197, 50);
             this.registerBtn.TabIndex = 3;
             this.registerBtn.Text = "registerBtn";
             this.registerBtn.UseCompatibleTextRendering = true;
@@ -107,29 +108,30 @@
             // 
             this.WelcomeLbl.AutoSize = true;
             this.WelcomeLbl.BackColor = System.Drawing.Color.Transparent;
-            this.WelcomeLbl.Location = new System.Drawing.Point(287, 62);
+            this.WelcomeLbl.Location = new System.Drawing.Point(215, 51);
+            this.WelcomeLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.WelcomeLbl.Name = "WelcomeLbl";
-            this.WelcomeLbl.Size = new System.Drawing.Size(85, 17);
+            this.WelcomeLbl.Size = new System.Drawing.Size(76, 15);
             this.WelcomeLbl.TabIndex = 4;
             this.WelcomeLbl.Text = "WelcomeLbl";
             // 
             // loginTxtBox
             // 
             this.loginTxtBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.loginTxtBox.Location = new System.Drawing.Point(329, 362);
-            this.loginTxtBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.loginTxtBox.Location = new System.Drawing.Point(247, 294);
+            this.loginTxtBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loginTxtBox.Name = "loginTxtBox";
-            this.loginTxtBox.Size = new System.Drawing.Size(297, 22);
+            this.loginTxtBox.Size = new System.Drawing.Size(224, 20);
             this.loginTxtBox.TabIndex = 5;
             this.loginTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // passwordTxtBox
             // 
             this.passwordTxtBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.passwordTxtBox.Location = new System.Drawing.Point(329, 414);
-            this.passwordTxtBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.passwordTxtBox.Location = new System.Drawing.Point(247, 336);
+            this.passwordTxtBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.passwordTxtBox.Name = "passwordTxtBox";
-            this.passwordTxtBox.Size = new System.Drawing.Size(297, 22);
+            this.passwordTxtBox.Size = new System.Drawing.Size(224, 20);
             this.passwordTxtBox.TabIndex = 6;
             this.passwordTxtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -137,10 +139,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::MedicalPJ.Properties.Resources._195234_removebg_preview;
-            this.pictureBox1.Location = new System.Drawing.Point(785, 120);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(589, 97);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(164, 142);
+            this.pictureBox1.Size = new System.Drawing.Size(123, 115);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -149,10 +151,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::MedicalPJ.Properties.Resources._195234_removebg_preview;
-            this.pictureBox2.Location = new System.Drawing.Point(851, 240);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(638, 195);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(287, 257);
+            this.pictureBox2.Size = new System.Drawing.Size(215, 209);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
@@ -161,10 +163,10 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::MedicalPJ.Properties.Resources._195234_removebg_preview;
-            this.pictureBox3.Location = new System.Drawing.Point(949, 18);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(712, 14);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(176, 160);
+            this.pictureBox3.Size = new System.Drawing.Size(132, 130);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 9;
             this.pictureBox3.TabStop = false;
@@ -173,10 +175,10 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::MedicalPJ.Properties.Resources._195234_removebg_preview;
-            this.pictureBox4.Location = new System.Drawing.Point(24, 90);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(18, 73);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(313, 272);
+            this.pictureBox4.Size = new System.Drawing.Size(235, 221);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 10;
             this.pictureBox4.TabStop = false;
@@ -185,10 +187,10 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = global::MedicalPJ.Properties.Resources._195234_removebg_preview;
-            this.pictureBox5.Location = new System.Drawing.Point(60, 379);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox5.Location = new System.Drawing.Point(45, 308);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(198, 169);
+            this.pictureBox5.Size = new System.Drawing.Size(149, 137);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 11;
             this.pictureBox5.TabStop = false;
@@ -197,19 +199,20 @@
             // 
             this.closeescLbl.AutoSize = true;
             this.closeescLbl.BackColor = System.Drawing.Color.Transparent;
-            this.closeescLbl.Location = new System.Drawing.Point(772, 537);
+            this.closeescLbl.Location = new System.Drawing.Point(579, 436);
+            this.closeescLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.closeescLbl.Name = "closeescLbl";
-            this.closeescLbl.Size = new System.Drawing.Size(82, 17);
+            this.closeescLbl.Size = new System.Drawing.Size(72, 15);
             this.closeescLbl.TabIndex = 12;
             this.closeescLbl.Text = "closeescLbl";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MedicalPJ.Properties.Resources.bakground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1195, 570);
+            this.ClientSize = new System.Drawing.Size(896, 463);
             this.Controls.Add(this.closeescLbl);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
@@ -224,7 +227,7 @@
             this.Controls.Add(this.headerLbl);
             this.Controls.Add(this.headerPic);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "MyMedicalApp";

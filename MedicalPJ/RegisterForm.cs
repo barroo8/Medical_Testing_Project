@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
-using IronXL;
 using MedicalPJ;
+using IronXL;
 
 
 namespace MedicalPJ
@@ -42,7 +42,7 @@ namespace MedicalPJ
             {
                 raw_index++;
                 cell_val = sheet["A" + raw_index.ToString()].ToString();
-                if(cell_val == textBox1.Text)
+                if (cell_val == textBox1.Text)
                 {
                     //there is alrady username with this name
                     //------------- bar chage -----------------------
@@ -58,7 +58,7 @@ namespace MedicalPJ
                 workbook.SaveAs("doctors.xlsx");
                 this.Hide();
             }
-            
+
         }
 
         //Custom Font function
@@ -126,6 +126,11 @@ namespace MedicalPJ
                 return true;
             }
             return base.ProcessDialogKey(keyData);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

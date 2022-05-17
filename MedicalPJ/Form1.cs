@@ -14,18 +14,16 @@ using System.IO;
 using MedicalPJ;
 using IronXL;
 
-
 namespace MedicalPJ
 {
     public partial class Form1 : Form
     {
         private PrivateFontCollection pfc = new PrivateFontCollection();
-        
+
         public Form1()
         {
             InitializeComponent();
             CenterToScreen();
-            IronXL.License.LicenseKey = "IRONXL.ALEXSAVIZKY.29293-E7232B2EF6-H2I4LF-7GQKQ3MWRGNM-2CN3SLI53KIJ-E4W23I7FJ4XL-Y2535OOEXL2C-FXU7QDZDE2PS-R7K4Q4-TQ4ZCBH5GBOGEA-DEPLOYMENT.TRIAL-QC3FJE.TRIAL.EXPIRES.16.JUN.2022";
 
             //Center the image
             headerPic.Left = (this.ClientSize.Width - headerPic.Width) / 2;
@@ -190,7 +188,7 @@ namespace MedicalPJ
                 if (sheet["A" + raw_index.ToString()].ToString() == loginTxtBox.Text && sheet["B" + raw_index.ToString()].ToString() == passwordTxtBox.Text)
                 {
                     //succes next page
-                    
+
                     (new Dashboard()).Show();
                     this.Hide();
                     break;
@@ -200,8 +198,6 @@ namespace MedicalPJ
             //fail username or password wrong
             closeescLbl.Text = "fail";
 
-
-            
         }
     }
 }

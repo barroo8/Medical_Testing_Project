@@ -16,24 +16,181 @@ namespace MedicalPJ
 {
     public partial class Form2 : Form
     {
+        private List<TextBox> textBoxes = new List<TextBox>();
         Patient alex = new Patient();
         int raw_index = 1;
         public Form2()
         {
             InitializeComponent();
-            
+
+            textBoxes.Add(wbcTxtBox);
+            textBoxes.Add(ureaTxtBox);
+            textBoxes.Add(neutTxtBox);
+            textBoxes.Add(hbTxtBox);
+            textBoxes.Add(lymphTxtBox);
+            textBoxes.Add(crtnTxtBox);
+            textBoxes.Add(rbcTxtBox);
+            textBoxes.Add(ironTxtBox);
+            textBoxes.Add(hctTxtBox);
+            textBoxes.Add(hdlTxtBox);
+            textBoxes.Add(apTxtBox);
+
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            
+            errorLbl.ForeColor = Color.Red;
+            errorLbl2.ForeColor = Color.Red;
+            errorLbl3.ForeColor = Color.Red;
+            errorLbl4.ForeColor = Color.Red;
+            errorLbl5.ForeColor = Color.Red;
         }
 
         public void button1_Click(object sender, EventArgs e)
         {
+            if ((maleRBtn.Checked == false && femaleRBtn.Checked == false) || (mizrahiRBtn.Checked == false &&
+                nomizrahiRBtn.Checked == false) || (ethipoiRBtn.Checked == false && noethiopiRBtn.Checked == false) || 
+                nameTxtBox.Text == "" || lastnameTxtBox.Text == "" || ageTxtBox.Text == "")
+            {
+                errorLbl4.Visible = true;
+                errorLbl4.Text = "נא למלא את כל השדות במלואם";
+                var t = new Timer();
+                t.Interval = 2000;
+                t.Tick += (s, ee) =>
+                {
+                    errorLbl4.Visible = false;
+                    t.Stop();
+                };
+                t.Start();
+                return;
+            }
+
+            bool flag = false;
+
+            foreach(TextBox t in textBoxes)
+            {
+
+                if (t.Text == "")
+                {
+                    errorLbl5.Visible = true;
+                    errorLbl5.Text = "נא למלא את כל השדות במלואם";
+                    var t3 = new Timer();
+                    t3.Interval = 2000;
+                    t3.Tick += (s, ee) =>
+                    {
+                        errorLbl5.Visible = false;
+                        t3.Stop();
+                    };
+                    t3.Start();
+                    return;
+                }
+
+                int isDot = 0;
+
+                foreach (char c in t.Text)
+                {
+                    if (c == 46)
+                    {
+                        isDot+=1;
+                    }
+
+                    if ((c < 47 && c!=46) || isDot > 1 || c > 58)
+                    {
+                        flag = true;
+                        t.Text = "";
+                    }
+                }
+            }
+            if (flag == true)
+            {
+                errorLbl5.Visible = true;
+                errorLbl5.Text = "נא להקיש ערכים מספריים";
+                var t2 = new Timer();
+                t2.Interval = 2000;
+                t2.Tick += (s, ee) =>
+                {
+                    errorLbl5.Visible = false;
+                    t2.Stop();
+                };
+                t2.Start();
+                flag = false;
+                return;
+            }
+            try
+            {
+                float textVal = float.Parse(neutTxtBox.Text);
+                if (textVal > 100 || textVal < 0)
+                {
+                    errorLbl5.Visible = true;
+                    errorLbl5.Text = "neut-נא להקיש ערכים בין 0-100 בתיבת ה";
+                    var t4 = new Timer();
+                    t4.Interval = 2000;
+                    t4.Tick += (s, ee) =>
+                    {
+                        errorLbl5.Visible = false;
+                        t4.Stop();
+                    };
+                    t4.Start();
+                    neutTxtBox.Text = "";
+                    return;
+                }
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                float textVal = float.Parse(lymphTxtBox.Text);
+                if (textVal > 100 || textVal < 0)
+                {
+                    errorLbl5.Visible = true;
+                    errorLbl5.Text = "lymph-נא להקיש ערכים בין 0-100 בתיבת ה";
+                    var t5 = new Timer();
+                    t5.Interval = 2000;
+                    t5.Tick += (s, ee) =>
+                    {
+                        errorLbl5.Visible = false;
+                        t5.Stop();
+                    };
+                    t5.Start();
+                    lymphTxtBox.Text = "";
+                    return;
+                }
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                float textVal = float.Parse(hctTxtBox.Text);
+                if (textVal > 100 || textVal < 0)
+                {
+                    errorLbl5.Visible = true;
+                    errorLbl5.Text = "hct-נא להקיש ערכים בין 0-100 בתיבת ה";
+                    var t6 = new Timer();
+                    t6.Interval = 2000;
+                    t6.Tick += (s, ee) =>
+                    {
+                        errorLbl5.Visible = false;
+                        t6.Stop();
+                    };
+                    t6.Start();
+                    hctTxtBox.Text = "";
+                    return;
+                }
+            }
+            catch
+            {
+
+            }
+
             WorkBook workbook = WorkBook.Load("Patients.xlsx");
             var sheet = workbook.GetWorkSheet("sheet");
             int i = 0;
+            
+            int raw_index = 1;
             string cell_val = "1";
             while(cell_val!= "")
             {
@@ -98,8 +255,35 @@ namespace MedicalPJ
                 i++;
             }
             int[] analasis = alex.Diagnosis();
-
+            //present diagnos
+            label39.Text = analsys(analasis[0]);
+            label38.Text = analsys(analasis[1]);
+            label37.Text = analsys(analasis[2]);
+            label36.Text = analsys(analasis[3]);
+            label35.Text = analsys(analasis[4]);
+            label34.Text = analsys(analasis[5]);
+            label33.Text = analsys(analasis[6]);
+            label32.Text = analsys(analasis[7]);
+            label31.Text = analsys(analasis[8]);
+            label30.Text = analsys(analasis[9]);
+            label29.Text = analsys(analasis[10]);
+            Question[] question_lst = alex.questionGeneratior(analasis);
+            i = 0;
+            //while (question_lst[i] != null)
+            //{
+            //label40.Text = question_lst[0].getQuestion();
+            //label33.Text = question_lst[1].getQuestion();
+            //if (question_lst[2] != null)
+            //{
+            //    label32.Text = question_lst[2].getQuestion();
+            //    label31.Text = question_lst[3].getQuestion();
+            //    label30.Text = question_lst[4].getQuestion();
+            //    label29.Text = question_lst[5].getQuestion();
+            //}
             label1_Click(sender,e)  ;
+            
+
+            //}
 
         }
         private string analsys(int num)
@@ -111,7 +295,10 @@ namespace MedicalPJ
             else
                 return "נמוך";
         }
+        private void answers(Question[] lst)
+        {
 
+        }
         private void label1_Click(object sender, EventArgs e)
         {
             nameLbl.Text = "shpih";
@@ -141,38 +328,123 @@ namespace MedicalPJ
         {
             if (nameTxtBox.Text == "" || lastnameTxtBox.Text == "" || nameTxtBox.Text == "" ||)
         }*/
-     /*
+
+        int countclick = 0;
+
+        private void nameTxtBox_Leave(object sender, EventArgs e)
         {
-            Question[] question_lst = alex.questionGeneratior(alex.Diagnosis());
-            
-            button2.Text = "הגש";
-            if (question_lst[countclick] == null)
+
+            foreach (char c in nameTxtBox.Text)
             {
-                button2.Text = "לעמוד הבא";
-                button2.Enabled = false;
-                
-            }
-            else if (countclick == 0)
-            {
-                label40.Text = question_lst[countclick].getQuestion();
-                countclick++;
-            }
-            else
-            {
-                if (checkBox8.Checked == true)
+                if (c>47 && c<58)
                 {
-                    question_lst[countclick - 1].setAnswer(true);
-                    checkBox8.Checked = false;
-                    countclick++;
+                    errorLbl.Text = "שם חייב להכיל אותיות בלבד";
+                    errorLbl.Visible = true;
+                    nameTxtBox.Text = "";
+                    break;
                 }
-                if (checkBox7.Checked == true)
-                {
-                    question_lst[countclick - 1].setAnswer(false);
-                    checkBox7.Checked = false;
-                    countclick++;
-                }
-                label40.Text = question_lst[countclick-1].getQuestion();
             }
-        }*/
+        }
+
+        private void nameTxtBox_Enter(object sender, EventArgs e)
+        {
+            errorLbl.Visible = false;
+        }
+
+        private void lastnameTxtBox_Leave(object sender, EventArgs e)
+        {
+
+            foreach (char c in lastnameTxtBox.Text)
+            {
+                if (c > 47 && c < 58)
+                {
+                    errorLbl2.Text = "שם משפחה חייב להכיל אותיות בלבד";
+                    errorLbl2.Visible = true;
+                    lastnameTxtBox.Text = "";
+                    break;
+                }
+            }
+        }
+
+        private void lastnameTxtBox_Enter(object sender, EventArgs e)
+        {
+            errorLbl2.Visible = false;
+        }
+
+        private void ageTxtBox_Leave(object sender, EventArgs e)
+        {
+            foreach (char c in ageTxtBox.Text)
+                {
+                    if (c < 47 || c > 58)
+                    {
+                            errorLbl3.Text = "גיל חייב להיות מספר בין 1-120";
+                            errorLbl3.Visible = true;
+                            ageTxtBox.Text = "";
+                            break;
+                    }
+                }
+            try
+            {
+                int textVal = int.Parse(ageTxtBox.Text);
+                if (textVal > 120 || textVal < 0)
+                {
+                    errorLbl3.Text = "גיל חייב להיות מספר בין 1-120";
+                    errorLbl3.Visible = true;
+                    ageTxtBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void ageTxtBox_Enter(object sender, EventArgs e)
+        {
+            errorLbl3.Visible = false;
+        }
+
+        private void neutTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+        /*        private void button2_Click(object sender, EventArgs e)
+                {
+                    Question[] question_lst = alex.questionGeneratior(alex.Diagnosis());
+
+                    button2.Text = "הגש";
+                    if (question_lst[countclick] == null)
+                    {
+                        button2.Text = "לעמוד הבא";
+                        button2.Enabled = false;
+
+                    }
+                    else if (countclick == 0)
+                    {
+                        label40.Text = question_lst[countclick].getQuestion();
+                        countclick++;
+                    }
+                    else
+                    {
+                        if (checkBox8.Checked == true)
+                        {
+                            question_lst[countclick - 1].setAnswer(true);
+                            checkBox8.Checked = false;
+                            countclick++;
+                        }
+                        if (checkBox7.Checked == true)
+                        {
+                            question_lst[countclick - 1].setAnswer(false);
+                            checkBox7.Checked = false;
+                            countclick++;
+                        }
+                        label40.Text = question_lst[countclick-1].getQuestion();
+                    }
+                }*/
     }
 }

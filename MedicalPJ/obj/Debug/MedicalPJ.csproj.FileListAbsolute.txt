@@ -14,6 +14,7 @@ C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\ob
 C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\bin\Debug\IronXL.dll
 C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\bin\Debug\IronXL.xml
 C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.csproj.CopyComplete
+C:\Users\bimbe\OneDrive\מסמכים\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.QuestionForm.resources
 C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\bin\Debug\MedicalPJ.exe.config
 C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\bin\Debug\MedicalPJ.exe
 C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\bin\Debug\MedicalPJ.pdb
@@ -24,6 +25,7 @@ C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\Medi
 C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.Form1.resources
 C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.Form2.resources
 C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.Properties.Resources.resources
+C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.QuestionForm.resources
 C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.RegisterForm.resources
 C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.csproj.GenerateResource.cache
 C:\Users\alexs\Documents\GitHub\Medical_Testing_Project\MedicalPJ\obj\Debug\MedicalPJ.csproj.CoreCompileInputs.cache

@@ -123,6 +123,16 @@ namespace MedicalPJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap coollogo_com_228681207 {
+            get {
+                object obj = ResourceManager.GetObject("coollogo_com-228681207", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap coollogo_com_25075506 {
             get {
                 object obj = ResourceManager.GetObject("coollogo_com-25075506", resourceCulture);
