@@ -290,7 +290,7 @@ namespace MedicalPJ
         //  [wbc, neut, lymph, RBC, hct, Urea, hb, Crtn, iron, hdl, ap]
         //  [0,     1,     2,    3,   4,   5,   6,   7,    8,   9,  10]
         {
-            Question[] question_lst = new Question[6];
+            Question[] question_lst = new Question[7];
             int j = 0;
             if ( diagnos[0] == 1)
             {
@@ -299,7 +299,9 @@ namespace MedicalPJ
             }
             if (diagnos[3] == 1)
             {
-                question_lst[j] = new Question("האם את.ה מעשן או חולה במחלת ריאות", "rbc : +");
+                question_lst[j] = new Question("האם את.ה מעשן", "rbc : +");
+                j++;
+                question_lst[j] = new Question(" חולה במחלת ריאות", "rbc : +");
                 j++;
             }
             if (diagnos[4] == 1)
@@ -321,9 +323,238 @@ namespace MedicalPJ
             }
             return question_lst;
         }
-        //public string[] FinalDiagnosis(int[] diagnos, Question [] questions)
-        //{
-        //   // string [] finaldiagnosis = new string
-        //}
+        public HashSet<string> FinalDiagnosis(int[] diagnos, Question[] questions)
+        {
+
+            HashSet<string> finaldiagnosis = new HashSet<string>();
+            int i = 0;
+            //WBC
+            if (diagnos[0]==1 && questions[i].getAnswer())
+            {
+                finaldiagnosis.Add("זיהום");
+                i++;
+            }
+            else if (diagnos[0] == 1 && questions[i].getAnswer() == false)
+            {
+                finaldiagnosis.Add("מחלת דם");
+                finaldiagnosis.Add("סרטן");
+                i++;
+            }
+            else if (diagnos[0] == -1)
+            {
+                finaldiagnosis.Add("מחלה ויראלית");
+                finaldiagnosis.Add("סרטן");
+                
+            }
+            //Neut
+            if (diagnos[1] == 1)
+            {
+                finaldiagnosis.Add("זיהום");
+            }
+            else if(diagnos[1] == -1)
+            {
+                finaldiagnosis.Add("הפרעה ביצירת הדם");
+                finaldiagnosis.Add("זיהום");
+                finaldiagnosis.Add("סרטן");
+            }
+            //Lymph
+            if (diagnos[2] == 1)
+            {
+                finaldiagnosis.Add("הפרעה ביצירת הדם");
+            }
+            else if (diagnos[2] == -1)
+            {
+                finaldiagnosis.Add("זיהום");
+                finaldiagnosis.Add("סרטן");
+            }
+            //RBC
+            if (diagnos[3] == 1)
+            {
+                finaldiagnosis.Add("הפרעה ביצירת הדם");
+                if (questions[i].getAnswer())
+                {
+                    finaldiagnosis.Add("מעשנים");
+                    i++;
+                    if (questions[i].getAnswer())
+                    {
+                        finaldiagnosis.Add("מחלת ריאות");
+                        i++;
+                    }
+                    else
+                        i++;
+                }
+                else
+                {
+                    i++;
+                    if (questions[i].getAnswer())
+                    {
+                        finaldiagnosis.Add("מחלת ריאות");
+                        i++;
+                    }
+                    else
+                        i++;
+                }
+            }
+            else if (diagnos[3] == -1)
+            {
+                finaldiagnosis.Add("אנמיה");
+                finaldiagnosis.Add("דימום");
+            }
+            //hct
+            if(diagnos[4] ==1 && questions[i].getAnswer())
+            {
+                finaldiagnosis.Add("מעשנים");
+                i++;
+            }
+            else if (diagnos[4] == -1)
+            {
+                finaldiagnosis.Add("אנמיה");
+                finaldiagnosis.Add("דימום");
+            }
+            //Urea
+            if(diagnos[5] == 1)
+            {
+                if (questions[i].getAnswer())
+                {
+                    finaldiagnosis.Add("דיאטה");
+                    i++;
+                }
+                else
+                {
+                    i++;
+                    finaldiagnosis.Add("מחלה כליה");
+                    finaldiagnosis.Add("התייבשות");
+                }
+            }
+            else if (diagnos[5] == -1)
+            {
+                if (questions[i].getAnswer())
+                {
+                    i++;
+                    finaldiagnosis.Add("דיאטה");
+                }
+                else
+                {
+                    i++;
+                    if (questions[i].getAnswer())
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        i++;
+                        finaldiagnosis.Add("תת תזונה");
+                        finaldiagnosis.Add("מחלת כבד");
+                    }
+                }
+            }
+            //hb
+            if(diagnos[6] == -1)
+            {
+                finaldiagnosis.Add("אנמיה");
+                finaldiagnosis.Add("הפרעה המטולוגית");
+            }
+            //ctrn
+            if (diagnos[7] == 1)
+            {
+                finaldiagnosis.Add("מחלת כליה");
+                finaldiagnosis.Add("מחלות שריר");
+                finaldiagnosis.Add("צריכה מוגברת של בשר");
+            }
+            else if (diagnos[7] == -1)
+            {
+                finaldiagnosis.Add("תת תזונה");
+            }
+            //Iron
+            if (diagnos[8] == 1)
+            {
+                finaldiagnosis.Add("הרעלת ברזל");
+            }
+            if (diagnos[8] == -1)
+            {
+                finaldiagnosis.Add("דימום");
+            }
+            //HDL
+            if (diagnos[9] == -1)
+            {
+                finaldiagnosis.Add("מחלות לב");
+                finaldiagnosis.Add("היפרליפידמיה");
+                finaldiagnosis.Add("סוכרת מבוגרים");
+            }
+            //ap
+            if (diagnos[10] == 1)
+            {
+                finaldiagnosis.Add("מחלות כבד");
+                finaldiagnosis.Add("מחלות בדרכי המרה");
+                finaldiagnosis.Add("שימוש בתרופות שונות");
+                finaldiagnosis.Add("פעילות יתר של בלוטת התריס");
+            }
+            else if(diagnos[10] == -1)
+            {
+                finaldiagnosis.Add("דיאטה");
+                finaldiagnosis.Add("חוסר בוויטמינים");
+            }
+            return finaldiagnosis;
+        }
+        public string DiagnosisToRecommendation(string diagnosis)
+        {
+            switch (diagnosis)
+            {
+                case "אנמיה":
+                    return "שני כדורי 10 מ''ג של" + " B12 " + "ביום למשך חודש";
+                case "דיאטה":
+                    return "לתאם פגישה עם תזונאי";
+                case "דימום":
+                    return "להתפנות בדחיפות לבית החולים";
+                case "היפרליפידמיה":
+                    return "לתאם פגישה עם תזונאי, כדור 5 מ''ג של סימוביל ביום למשך שבוע";
+                case "הפרעה ביצירת הדם":
+                    return "כדור 10 מ''ג של" + " B12 " + "ביום למשך חודש" + " כדור 5 מ''ג של פולית ביום למשך חודש" ;
+                case "הפרעה המטולוגית":
+                    return "זריקה של הורמון לעידוד ייצור תאי הדם האדומים";
+                case "הרעלת ברזל":
+                    return "להתפנות לבית החולים";
+                case "התייבשות":
+                    return "למנוחה מוחלטת בשכיבה, החזרת נוזלים בשתייה";
+                case "זיהום":
+                    return "אנטיביוטיקה ייעודית";
+                case "חוסר בוויטמינים":
+                    return " הפנייה לבדיקת דם לזיהוי הוויטמינים החסרים";
+                case "מחלה ויראלית":
+                    return "לנוח בבית";
+                case "מחלות בדרכי המרה":
+                    return "הפנייה לטיפול כירורגי";
+                case "מחלות לב":
+                    return "לתאם פגישה עם תזונאי";
+                case "מחלת דם":
+                    return "שילוב של ציקלופוספאמיד וקורטיקוסרואידים";
+                case "מחלות כבד":
+                    return " הפנייה לאבחנה ספציפית לצורך קביעת טיפולי";
+                case "מחלה כליה":
+                    return "איזון את רמות הסוכר בדם";
+                case "מחסור בברזל":
+                    return "שני כדורי 10 מ''ג של" + " B12 " + "ביום למשך חודש"; 
+                case "מחלות שריר":
+                    return "שני כדורי 5 מ''ג של כורכום" + " C3 " + "של אלטמן ביום למשך חודש";
+                case "מעשנים":
+                    return "להפסיק לעשן";
+                case "מחלת ריאות":
+                    return "להפסיק לעשן / הפנייה לצילום רנטגן של הריאות";
+                case "פעילות יתר של בלוטת התריס":
+                    return "Propylthiouracil" + "להקטנת פעילות בלוטת התריס";
+                case "סוכרת מבוגרים":
+                    return "התאמת אינסולין למטופל";
+                case "סרטן":
+                    return " אנטרקטיניב ";
+                case "צריכה מוגברת של בשר":
+                    return "לתאם פגישה עם תזונאי";
+                case "שימוש בתרופות שונות":
+                    return "פנייה לרופא המשפחה לצורך בדיקת התאמה בין התרופות";
+                case "תת תזונה":
+                    return "לתאם פגישה עם תזונאי";
+                default:
+                    return "טעות";
+            }
+        }
     }
 }
