@@ -17,8 +17,8 @@ namespace MedicalPJ
     public partial class Form2 : Form
     {
         private List<TextBox> textBoxes = new List<TextBox>();
-        Patient alex = new Patient();
-        int raw_index = 1;
+        static public Patient alex = new Patient();
+        public int raw_index = 1;
         public Form2()
         {
             InitializeComponent();
@@ -254,36 +254,12 @@ namespace MedicalPJ
                 alex.insert_values(cell.Text, i);
                 i++;
             }
-            int[] analasis = alex.Diagnosis();
-            //present diagnos
-            label39.Text = analsys(analasis[0]);
-            label38.Text = analsys(analasis[1]);
-            label37.Text = analsys(analasis[2]);
-            label36.Text = analsys(analasis[3]);
-            label35.Text = analsys(analasis[4]);
-            label34.Text = analsys(analasis[5]);
-            label33.Text = analsys(analasis[6]);
-            label32.Text = analsys(analasis[7]);
-            label31.Text = analsys(analasis[8]);
-            label30.Text = analsys(analasis[9]);
-            label29.Text = analsys(analasis[10]);
-            Question[] question_lst = alex.questionGeneratior(analasis);
-            i = 0;
-            //while (question_lst[i] != null)
-            //{
-            //label40.Text = question_lst[0].getQuestion();
-            //label33.Text = question_lst[1].getQuestion();
-            //if (question_lst[2] != null)
-            //{
-            //    label32.Text = question_lst[2].getQuestion();
-            //    label31.Text = question_lst[3].getQuestion();
-            //    label30.Text = question_lst[4].getQuestion();
-            //    label29.Text = question_lst[5].getQuestion();
-            //}
-            label1_Click(sender,e)  ;
-            
-
-            //}
+            if(alex.questionGeneratior(alex.Diagnosis())!=null)
+                (new QuestionForm()).Show();
+            else
+            {
+                //diagnos form
+            }
 
         }
         private string analsys(int num)

@@ -7,7 +7,7 @@ using IronXL;
 
 namespace MedicalPJ
 {
-    class Patient
+    public class Patient
     {
         public string name;
         public string last_name;

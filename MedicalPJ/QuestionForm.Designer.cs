@@ -41,9 +41,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MedicalPJ.Properties.Resources.coollogo_com_228681207;
-            this.pictureBox1.Location = new System.Drawing.Point(112, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(75, 8);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(601, 135);
+            this.pictureBox1.Size = new System.Drawing.Size(401, 88);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -51,18 +52,20 @@
             // questionLbl
             // 
             this.questionLbl.AutoSize = true;
-            this.questionLbl.Location = new System.Drawing.Point(622, 183);
+            this.questionLbl.Location = new System.Drawing.Point(236, 117);
+            this.questionLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.questionLbl.Name = "questionLbl";
-            this.questionLbl.Size = new System.Drawing.Size(91, 20);
+            this.questionLbl.Size = new System.Drawing.Size(71, 15);
             this.questionLbl.TabIndex = 1;
             this.questionLbl.Text = "questionLbl";
             // 
             // yesBtn
             // 
             this.yesBtn.AutoSize = true;
-            this.yesBtn.Location = new System.Drawing.Point(17, 13);
+            this.yesBtn.Location = new System.Drawing.Point(11, 8);
+            this.yesBtn.Margin = new System.Windows.Forms.Padding(2);
             this.yesBtn.Name = "yesBtn";
-            this.yesBtn.Size = new System.Drawing.Size(49, 24);
+            this.yesBtn.Size = new System.Drawing.Size(38, 19);
             this.yesBtn.TabIndex = 2;
             this.yesBtn.TabStop = true;
             this.yesBtn.Text = "כן";
@@ -71,9 +74,10 @@
             // noBtn
             // 
             this.noBtn.AutoSize = true;
-            this.noBtn.Location = new System.Drawing.Point(17, 54);
+            this.noBtn.Location = new System.Drawing.Point(11, 35);
+            this.noBtn.Margin = new System.Windows.Forms.Padding(2);
             this.noBtn.Name = "noBtn";
-            this.noBtn.Size = new System.Drawing.Size(53, 24);
+            this.noBtn.Size = new System.Drawing.Size(43, 19);
             this.noBtn.TabIndex = 3;
             this.noBtn.TabStop = true;
             this.noBtn.Text = "לא";
@@ -83,9 +87,11 @@
             // 
             this.questionGroupBox.Controls.Add(this.noBtn);
             this.questionGroupBox.Controls.Add(this.yesBtn);
-            this.questionGroupBox.Location = new System.Drawing.Point(630, 227);
+            this.questionGroupBox.Location = new System.Drawing.Point(241, 146);
+            this.questionGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.questionGroupBox.Name = "questionGroupBox";
-            this.questionGroupBox.Size = new System.Drawing.Size(83, 84);
+            this.questionGroupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.questionGroupBox.Size = new System.Drawing.Size(55, 55);
             this.questionGroupBox.TabIndex = 4;
             this.questionGroupBox.TabStop = false;
             // 
@@ -95,23 +101,26 @@
             this.registerclickBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.registerclickBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.registerclickBtn.Image = global::MedicalPJ.Properties.Resources.bluebutton;
-            this.registerclickBtn.Location = new System.Drawing.Point(295, 368);
+            this.registerclickBtn.Location = new System.Drawing.Point(182, 239);
+            this.registerclickBtn.Margin = new System.Windows.Forms.Padding(2);
             this.registerclickBtn.Name = "registerclickBtn";
-            this.registerclickBtn.Size = new System.Drawing.Size(210, 50);
+            this.registerclickBtn.Size = new System.Drawing.Size(155, 32);
             this.registerclickBtn.TabIndex = 11;
             this.registerclickBtn.Text = "לשאלה הבאה";
             this.registerclickBtn.UseCompatibleTextRendering = true;
             this.registerclickBtn.UseVisualStyleBackColor = true;
+            this.registerclickBtn.Click += new System.EventHandler(this.registerclickBtn_Click);
             // 
             // QuestionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(533, 292);
             this.Controls.Add(this.registerclickBtn);
             this.Controls.Add(this.questionGroupBox);
             this.Controls.Add(this.questionLbl);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "QuestionForm";
             this.Text = "QuestionForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
