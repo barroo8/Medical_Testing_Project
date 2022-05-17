@@ -84,6 +84,7 @@
             this.loginBtn.Text = "loginBtn";
             this.loginBtn.UseCompatibleTextRendering = true;
             this.loginBtn.UseVisualStyleBackColor = true;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
             // registerBtn
             // 

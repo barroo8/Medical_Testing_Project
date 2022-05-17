@@ -18,6 +18,7 @@ namespace MedicalPJ
             CenterToScreen();
 
             closeBtn.Left = (this.ClientSize.Width - closeBtn.Width);
+            minimizeBtn.Left = (this.ClientSize.Width - closeBtn.Width - minimizeBtn.Width);
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -44,7 +45,12 @@ namespace MedicalPJ
 
         private void button2_Click(object sender, EventArgs e)
         {
+            loadform(new Form3());
+        }
 
+        private void minimizeBtn_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

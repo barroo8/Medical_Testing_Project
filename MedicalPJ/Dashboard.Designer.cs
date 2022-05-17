@@ -35,6 +35,7 @@
             this.panelheader = new System.Windows.Forms.Panel();
             this.closeBtn = new System.Windows.Forms.Button();
             this.mainpanel = new System.Windows.Forms.Panel();
+            this.minimizeBtn = new System.Windows.Forms.Button();
             this.panelside.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelheader.SuspendLayout();
@@ -101,6 +102,7 @@
             // panelheader
             // 
             this.panelheader.BackColor = System.Drawing.Color.Gray;
+            this.panelheader.Controls.Add(this.minimizeBtn);
             this.panelheader.Controls.Add(this.closeBtn);
             this.panelheader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelheader.Location = new System.Drawing.Point(0, 0);
@@ -133,6 +135,22 @@
             this.mainpanel.Size = new System.Drawing.Size(1079, 666);
             this.mainpanel.TabIndex = 2;
             // 
+            // minimizeBtn
+            // 
+            this.minimizeBtn.BackColor = System.Drawing.Color.Gray;
+            this.minimizeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.minimizeBtn.FlatAppearance.BorderSize = 0;
+            this.minimizeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minimizeBtn.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minimizeBtn.ForeColor = System.Drawing.Color.White;
+            this.minimizeBtn.Location = new System.Drawing.Point(1200, 0);
+            this.minimizeBtn.Name = "minimizeBtn";
+            this.minimizeBtn.Size = new System.Drawing.Size(46, 46);
+            this.minimizeBtn.TabIndex = 3;
+            this.minimizeBtn.Text = "-";
+            this.minimizeBtn.UseVisualStyleBackColor = false;
+            this.minimizeBtn.Click += new System.EventHandler(this.minimizeBtn_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -161,5 +179,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button closeBtn;
+        private System.Windows.Forms.Button minimizeBtn;
     }
 }

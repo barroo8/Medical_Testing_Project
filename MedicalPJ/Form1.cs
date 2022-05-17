@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Reflection;
 using System.IO;
 using MedicalPJ;
+using IronXL;
 
 namespace MedicalPJ
 {
@@ -171,6 +172,42 @@ namespace MedicalPJ
                 passwordTxtBox.Font = new Font(passwordTxtBox.Font.FontFamily, 16);
                 passwordTxtBox.PasswordChar = '*';
             }
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            WorkBook workbook = WorkBook.Load("doctors.xlsx");
+            var sheet = workbook.GetWorkSheet("sheet");
+            //chek there is no user name with this username
+            int raw_index = 1;
+            string cell_val = "1";
+            while (cell_val != "")
+            {
+                raw_index++;
+                cell_val = sheet["A" + raw_index.ToString()].ToString();
+                if (sheet["A" + raw_index.ToString()].ToString() == loginTxtBox.Text && sheet["B" + raw_index.ToString()].ToString() == passwordTxtBox.Text)
+                {
+                    //succes next page
+
+                    (new Dashboard()).Show();
+                    this.Hide();
+                    break;
+                }
+            }
+
+            //fail username or password wrong
+            closeescLbl.ForeColor = Color.Red;
+            closeescLbl.Text = "שם משתמש וסיסמא לא נכונים/לא קיימים במערכת";
+
+            var t = new Timer();
+            t.Interval = 2000;
+            t.Tick += (s, ee) =>
+            {
+                closeescLbl.Text = "כדי לסגור את המסך בכל עת ESC ניתן ללחוץ על **";
+                closeescLbl.ForeColor = Color.Black;
+                t.Stop();
+            };
+            t.Start();
         }
     }
 }

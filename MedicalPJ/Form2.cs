@@ -323,8 +323,6 @@ namespace MedicalPJ
 
         }
 
-        int countclick = 0;
-
         private void nameTxtBox_Leave(object sender, EventArgs e)
         {
 
@@ -397,6 +395,7 @@ namespace MedicalPJ
         {
             errorLbl3.Visible = false;
         }
+
 
 
 

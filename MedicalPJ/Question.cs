@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MedicalPJ
 {
-    class Question
+    public class Question
     {
         string question;
         string symptom;
