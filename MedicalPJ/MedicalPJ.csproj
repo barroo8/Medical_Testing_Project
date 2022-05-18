@@ -91,6 +91,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cardiogram_icon-icons.com_66072.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="IronXL, Version=2022.3.0.0, Culture=neutral, PublicKeyToken=0f5804b6690bad1e, processorArchitecture=MSIL">
       <HintPath>packages\IronXL.Excel.2022.3.0\lib\net45\IronXL.dll</HintPath>
@@ -279,6 +282,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cardiogram_icon-icons.com_66072.ico" />
+    <Content Include="Resources\cardiogram_icon-icons.com_66072.ico" />
+    <None Include="Resources\statusnormal.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

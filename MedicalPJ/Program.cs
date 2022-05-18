@@ -18,9 +18,9 @@ namespace MedicalPJ
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
-            //Application.Run(new Dashboard());
+            Application.Run(new Dashboard());
             //Application.Run(new RegisterForm());
-            Application.Run(new ChartsForm());
+            //Application.Run(new ChartsForm());
         }
 
     }

@@ -17,7 +17,7 @@ namespace MedicalPJ
     public partial class Form2 : Form
     {
         private List<TextBox> textBoxes = new List<TextBox>();
-        Patient alex = new Patient();
+        public static Patient alex = new Patient();
         public Form2()
         {
             InitializeComponent();
@@ -240,10 +240,7 @@ namespace MedicalPJ
             sheet["J" + raw_index.ToString()].FormatString = "0.00%";
             sheet["L" + raw_index.ToString()].FormatString = "0.00%";
 
-
             workbook.SaveAs("Patients.xlsx");
-
-
 
             //excel to object
             foreach (var cell in sheet["A"+ raw_index.ToString() + ":R"+ raw_index.ToString()])
@@ -253,38 +250,24 @@ namespace MedicalPJ
                 alex.insert_values(cell.Text, i);
                 i++;
             }
-            int[] analasis = alex.Diagnosis();
-            //present diagnos
-            label39.Text = analsys(analasis[0]);
-            label38.Text = analsys(analasis[1]);
-            label37.Text = analsys(analasis[2]);
-            label36.Text = analsys(analasis[3]);
-            label35.Text = analsys(analasis[4]);
-            label34.Text = analsys(analasis[5]);
-            label33.Text = analsys(analasis[6]);
-            label32.Text = analsys(analasis[7]);
-            label31.Text = analsys(analasis[8]);
-            label30.Text = analsys(analasis[9]);
-            label29.Text = analsys(analasis[10]);
-            Question[] question_lst = alex.questionGeneratior(analasis);
-            i = 0;
-            //while (question_lst[i] != null)
-            //{
-            //label40.Text = question_lst[0].getQuestion();
-            //label33.Text = question_lst[1].getQuestion();
-            //if (question_lst[2] != null)
-            //{
-            //    label32.Text = question_lst[2].getQuestion();
-            //    label31.Text = question_lst[3].getQuestion();
-            //    label30.Text = question_lst[4].getQuestion();
-            //    label29.Text = question_lst[5].getQuestion();
-            //}
-            label1_Click(sender,e)  ;
-            
-
-            //}
-
+            ChartsForm cf = new ChartsForm();
+            loadform(cf);
+            panel1.BringToFront();
         }
+
+        public void loadform(object Form)
+        {
+            if (this.panel1.Controls.Count > 0)
+                this.panel1.Controls.RemoveAt(0);
+            Form f = Form as Form;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.panel1.Controls.Add(f);
+            this.panel1.Tag = f;
+            f.Show();
+        }
+
+
         private string analsys(int num)
         {
             if (num == 0)

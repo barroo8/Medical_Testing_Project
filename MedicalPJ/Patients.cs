@@ -496,6 +496,27 @@ namespace MedicalPJ
             }
             return finaldiagnosis;
         }
+
+        //  [wbc, neut, lymph, RBC, hct, Urea, hb, Crtn, iron, hdl, ap]
+        //  [0,     1,     2,    3,   4,   5,   6,   7,    8,   9,  10]
+        public float[] normolizevalues()
+        {
+
+            float[] normal_values = new float[11];
+            normal_values[0] = (wbc - 11000) / 6500;
+            normal_values[1] = (neut - 41) / 13;
+            normal_values[2] = (lymph - 44) / 8;
+            normal_values[3] = (rbc - 5.25F) / 0.75F;
+            normal_values[4] = (hct - 43.5F) / 10.5F;
+            normal_values[5] = (urea - 32) / 15;
+            normal_values[6] = (hb - 14.5F) / 3.25F;
+            normal_values[7] = (crtn - 0.7F) / 0.5F;
+            normal_values[8] = (iron - 104) / 56;
+            normal_values[9] = (hdl - 64.5F) / 35.5F;
+            normal_values[10] = (ap - 75) / 45;
+
+            return normal_values;
+        }
         public string DiagnosisToRecommendation(string diagnosis)
         {
             switch (diagnosis)
