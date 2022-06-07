@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
 using MedicalPJ;
+using IronXL;
 
 
 namespace MedicalPJ
@@ -34,7 +35,43 @@ namespace MedicalPJ
 
         private void registerclickBtn_Click(object sender, EventArgs e)
         {
+            WorkBook workbook = WorkBook.Load("doctors.xlsx");
+            var sheet = workbook.GetWorkSheet("sheet");
+            //chek there is no user name with this username
+            int raw_index = 1;
+            string cell_val = "1";
+            bool flag = true;
+            while (cell_val != "")
+            {
+                raw_index++;
+                cell_val = sheet["A" + raw_index.ToString()].ToString();
+                if (cell_val == textBox1.Text)
+                {
+                    //there is alrady username with this name
+                    errorLbl.Visible = true;
+                    errorLbl.Text = "שם המשתמש שהזנת כבר קיים במערכת";
 
+
+                    var t = new Timer();
+                    t.Interval = 2000;
+                    t.Tick += (s, ee) =>
+                    {
+                        errorLbl.Visible = false;
+                        t.Stop();
+                    };
+                    t.Start();
+
+                    flag = false;
+                }
+            }
+            if (flag)
+            {
+                sheet["A" + raw_index.ToString()].Value = textBox1.Text;
+                sheet["B" + raw_index.ToString()].Value = textBox2.Text;
+                sheet["C" + raw_index.ToString()].Value = textBox3.Text;
+                workbook.SaveAs("doctors.xlsx");
+                this.Hide();
+            }
         }
 
         //Custom Font function

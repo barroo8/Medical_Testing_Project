@@ -14,6 +14,7 @@ namespace MedicalPJ
     public partial class Form3 : Form
     {
         float[] madadim = new float[11];
+        int raw_index = Dashboard.raw_index;
         public Form3()
         {
             InitializeComponent();
@@ -133,6 +134,7 @@ namespace MedicalPJ
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //------------------------------check if the form filled correctly -------------------------------------
             if ((maleRBtn.Checked == false && femaleRBtn.Checked == false) || (mizrahiRBtn.Checked == false &&
                 nomizrahiRBtn.Checked == false) || (ethipoiRBtn.Checked == false && noethiopiRBtn.Checked == false) ||
                 nameTxtBox.Text == "" || lastnameTxtBox.Text == "" || ageTxtBox.Text == "" || richTextBox1.Text == "")
@@ -149,7 +151,111 @@ namespace MedicalPJ
                 t.Start();
                 return;
             }
+            //-------------------------------------------------------------------------------------------
+            //------------------------------insert values into the main excel fille ---------------------
+            WorkBook workbook = WorkBook.Load("Patients.xlsx");
+            var sheet = workbook.GetWorkSheet("sheet");
+            int id = 0;
+            raw_index = 1;
+            string cell_val = "1";
+            //find where is the next row and the id of this meeting
+            while (cell_val != "")
+            {
+                raw_index++;
+                cell_val = sheet["S" + raw_index.ToString()].ToString();
+                if (sheet["A" + raw_index.ToString()].ToString() != "")
+                    id = int.Parse(sheet["A" + raw_index.ToString()].ToString());
+            }
+            id++;
+            Dashboard.raw_index = raw_index;
+            //insert values into the excel fille
+            sheet["A" + raw_index.ToString()].Value = id;
+            sheet["B" + raw_index.ToString()].Value = nameTxtBox.Text;
+            sheet["C" + raw_index.ToString()].Value = lastnameTxtBox.Text;
+            sheet["D" + raw_index.ToString()].Value = float.Parse(ageTxtBox.Text);
+            if (maleRBtn.Checked == true)
+            {
+                sheet["E" + raw_index.ToString()].Value = true;
+            }
+            else
+            {
+                sheet["E" + raw_index.ToString()].Value = false;
+            }
+            if (mizrahiRBtn.Checked == true)
+            {
+                sheet["F" + raw_index.ToString()].Value = true;
+            }
+            else
+            {
+                sheet["F" + raw_index.ToString()].Value = false;
+            }
+            if (ethipoiRBtn.Checked == true)
+            {
+                sheet["G" + raw_index.ToString()].Value = true;
+            }
+            else
+            {
+                sheet["G" + raw_index.ToString()].Value = false;
+            }
+            Char k = 'H';
+            int i = 0;
+            for (i = 0; i < 11; i++)
+            {
+                if (k == 'I' || k == 'J' || k == 'L')
+                {
+                    sheet[k.ToString() + raw_index.ToString()].Value = madadim[i] / 100;
+                    sheet[k.ToString() + raw_index.ToString()].FormatString = "0.00%";
+                }
+                else
+                    sheet[k.ToString() + raw_index.ToString()].Value = madadim[i];
+                k = (Char)(Convert.ToUInt16(k) + 1);
+            }
+            workbook.SaveAs("Patients.xlsx");//save fille
+            i = 0;
+            //-------------------------------------------------------------------------------------------
+            //excel to patient object
+            foreach (var cell in sheet["A" + raw_index.ToString() + ":R" + raw_index.ToString()])
+            {
+                Dashboard.alex.insert_values(cell.Text, i);
+                i++;
+            }
+            //------------------------------------------questions --------------------------------------
+            bool question = false;
+            Dashboard.alex.Diagnosis();
+            Dashboard.alex.questionGeneratior();
+            Question[] questlist = Dashboard.alex.GetQuestions();
+            for (int j = 0; j < 6; j++)
+            {
+                if (questlist[j] != null)
+                {
+                    QuestionForm qf = new QuestionForm();
+                    qf.Show();
+                    qf.FormClosed += delegate
+                    {
+                        nextpage();
+                    };
+                    question = true;
+                    break;
+                }
+            }
+            if (question == false)
+            {
+                Dashboard.alex.FinalDiagnosis();
+                HashSet<string> finaldiagnosis = Dashboard.alex.GetFinalDiagnosis();
+                
+                foreach (string j in finaldiagnosis)
+                {
+                    sheet["S" + Dashboard.raw_index.ToString()].Value = j;
+                    sheet["T" + Dashboard.raw_index.ToString()].Value = Dashboard.alex.DiagnosisToRecommendation(j);
+                    Dashboard.raw_index++;
+                }
+                workbook.SaveAs("Patients.xlsx");
+                nextpage();
+            }
+        }
 
+        public void nextpage()
+        {
             ChartsForm cf = new ChartsForm();
             loadform(cf);
             panel1.BringToFront();
@@ -166,7 +272,5 @@ namespace MedicalPJ
             this.panel1.Tag = f;
             f.Show();
         }
-
-
     }
 }

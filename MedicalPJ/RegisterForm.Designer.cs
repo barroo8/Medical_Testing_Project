@@ -192,7 +192,7 @@
             this.errorLbl.AutoSize = true;
             this.errorLbl.BackColor = System.Drawing.Color.Transparent;
             this.errorLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.errorLbl.Location = new System.Drawing.Point(302, 85);
+            this.errorLbl.Location = new System.Drawing.Point(302, 81);
             this.errorLbl.Name = "errorLbl";
             this.errorLbl.Size = new System.Drawing.Size(65, 24);
             this.errorLbl.TabIndex = 13;

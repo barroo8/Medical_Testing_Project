@@ -47,6 +47,9 @@ namespace MedicalPJ
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            IronXL.License.LicenseKey = "IRONXL.ALEXSAVIZKY.29293-E7232B2EF6-H2I4LF-7GQK" +
+                "Q3MWRGNM-2CN3SLI53KIJ-E4W23I7FJ4XL-" +
+                "Y2535OOEXL2C-FXU7QDZDE2PS-R7K4Q4-TQ4ZCBH5GBOGEA-DEPLOYMENT.TRIAL-QC3FJE.TRIAL.EXPIRES.16.JUN.2022";
             this.ActiveControl = headerPic;
             InitCustomLabelFont();
         }
@@ -125,7 +128,7 @@ namespace MedicalPJ
             WelcomeLbl.Text = "ברוכים הבאים למערכת הרפואית המתקדמת בישראל";
 
             closeescLbl.Font = new Font(pfc.Families[0], 10);
-            closeescLbl.Text = "כדי לסגור את המסך בכל עת ESC ניתן ללחוץ על **";
+            closeescLbl.Text = "";
         }
         //Dispose pfc when closed
         private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
@@ -176,6 +179,7 @@ namespace MedicalPJ
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
+            //connect to the excel
             WorkBook workbook = WorkBook.Load("doctors.xlsx");
             var sheet = workbook.GetWorkSheet("sheet");
             //chek there is no user name with this username
@@ -188,7 +192,6 @@ namespace MedicalPJ
                 if (sheet["A" + raw_index.ToString()].ToString() == loginTxtBox.Text && sheet["B" + raw_index.ToString()].ToString() == passwordTxtBox.Text)
                 {
                     //succes next page
-
                     (new Dashboard()).Show();
                     this.Hide();
                     break;
@@ -203,7 +206,7 @@ namespace MedicalPJ
             t.Interval = 2000;
             t.Tick += (s, ee) =>
             {
-                closeescLbl.Text = "כדי לסגור את המסך בכל עת ESC ניתן ללחוץ על **";
+                closeescLbl.Text = "";
                 closeescLbl.ForeColor = Color.Black;
                 t.Stop();
             };

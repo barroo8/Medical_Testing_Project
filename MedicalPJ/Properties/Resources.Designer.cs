@@ -103,6 +103,16 @@ namespace MedicalPJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap coollogo_com_14511978 {
+            get {
+                object obj = ResourceManager.GetObject("coollogo_com-14511978", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap coollogo_com_18154383 {
             get {
                 object obj = ResourceManager.GetObject("coollogo_com-18154383", resourceCulture);
@@ -123,6 +133,16 @@ namespace MedicalPJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap coollogo_com_21697791 {
+            get {
+                object obj = ResourceManager.GetObject("coollogo_com-21697791", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap coollogo_com_228681207 {
             get {
                 object obj = ResourceManager.GetObject("coollogo_com-228681207", resourceCulture);
@@ -133,9 +153,29 @@ namespace MedicalPJ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap coollogo_com_242411344 {
+            get {
+                object obj = ResourceManager.GetObject("coollogo_com-242411344", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap coollogo_com_25075506 {
             get {
                 object obj = ResourceManager.GetObject("coollogo_com-25075506", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap coollogo_com_252345159 {
+            get {
+                object obj = ResourceManager.GetObject("coollogo_com-252345159", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,6 +286,36 @@ namespace MedicalPJ.Properties {
         internal static System.Drawing.Bitmap WhatsApp_Image_2022_05_02_at_19_53_18 {
             get {
                 object obj = ResourceManager.GetObject("WhatsApp Image 2022-05-02 at 19.53.18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap לzzzzzzzzzלא_שם_removebg_preview__1_ {
+            get {
+                object obj = ResourceManager.GetObject("לzzzzzzzzzלא_שם-removebg-preview (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ללא_שם_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("ללא_שם-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ללא_שם_removebg_preview__1_ {
+            get {
+                object obj = ResourceManager.GetObject("ללא_שם-removebg-preview (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

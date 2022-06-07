@@ -79,9 +79,9 @@
             // 
             this.groupBox2.Controls.Add(this.ethipoiRBtn);
             this.groupBox2.Controls.Add(this.noethiopiRBtn);
-            this.groupBox2.Location = new System.Drawing.Point(716, 524);
+            this.groupBox2.Location = new System.Drawing.Point(716, 525);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(145, 87);
+            this.groupBox2.Size = new System.Drawing.Size(146, 88);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             // 
@@ -113,7 +113,7 @@
             this.groupBox3.Controls.Add(this.mizrahiRBtn);
             this.groupBox3.Location = new System.Drawing.Point(716, 423);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(145, 87);
+            this.groupBox3.Size = new System.Drawing.Size(146, 88);
             this.groupBox3.TabIndex = 91;
             this.groupBox3.TabStop = false;
             // 
@@ -143,9 +143,9 @@
             // 
             this.groupBox1.Controls.Add(this.femaleRBtn);
             this.groupBox1.Controls.Add(this.maleRBtn);
-            this.groupBox1.Location = new System.Drawing.Point(716, 324);
+            this.groupBox1.Location = new System.Drawing.Point(716, 325);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(142, 87);
+            this.groupBox1.Size = new System.Drawing.Size(142, 88);
             this.groupBox1.TabIndex = 90;
             this.groupBox1.TabStop = false;
             // 
@@ -173,8 +173,8 @@
             // 
             // ageTxtBox
             // 
-            this.ageTxtBox.Location = new System.Drawing.Point(721, 271);
-            this.ageTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ageTxtBox.Location = new System.Drawing.Point(722, 271);
+            this.ageTxtBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ageTxtBox.Name = "ageTxtBox";
             this.ageTxtBox.Size = new System.Drawing.Size(130, 26);
             this.ageTxtBox.TabIndex = 89;
@@ -183,8 +183,8 @@
             // 
             // lastnameTxtBox
             // 
-            this.lastnameTxtBox.Location = new System.Drawing.Point(721, 205);
-            this.lastnameTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lastnameTxtBox.Location = new System.Drawing.Point(722, 205);
+            this.lastnameTxtBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.lastnameTxtBox.Name = "lastnameTxtBox";
             this.lastnameTxtBox.Size = new System.Drawing.Size(130, 26);
             this.lastnameTxtBox.TabIndex = 88;
@@ -193,8 +193,8 @@
             // 
             // nameTxtBox
             // 
-            this.nameTxtBox.Location = new System.Drawing.Point(721, 135);
-            this.nameTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nameTxtBox.Location = new System.Drawing.Point(722, 135);
+            this.nameTxtBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.nameTxtBox.Name = "nameTxtBox";
             this.nameTxtBox.Size = new System.Drawing.Size(130, 26);
             this.nameTxtBox.TabIndex = 87;
@@ -215,7 +215,7 @@
             // 
             this.mizrahiLbl.AutoSize = true;
             this.mizrahiLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.mizrahiLbl.Location = new System.Drawing.Point(865, 441);
+            this.mizrahiLbl.Location = new System.Drawing.Point(866, 442);
             this.mizrahiLbl.Name = "mizrahiLbl";
             this.mizrahiLbl.Size = new System.Drawing.Size(114, 22);
             this.mizrahiLbl.TabIndex = 85;
@@ -225,7 +225,7 @@
             // 
             this.sexLbl.AutoSize = true;
             this.sexLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.sexLbl.Location = new System.Drawing.Point(865, 339);
+            this.sexLbl.Location = new System.Drawing.Point(866, 338);
             this.sexLbl.Name = "sexLbl";
             this.sexLbl.Size = new System.Drawing.Size(42, 22);
             this.sexLbl.TabIndex = 84;
@@ -245,7 +245,7 @@
             // 
             this.lastnameLbl.AutoSize = true;
             this.lastnameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.lastnameLbl.Location = new System.Drawing.Point(865, 206);
+            this.lastnameLbl.Location = new System.Drawing.Point(866, 206);
             this.lastnameLbl.Name = "lastnameLbl";
             this.lastnameLbl.Size = new System.Drawing.Size(107, 22);
             this.lastnameLbl.TabIndex = 82;
@@ -255,7 +255,7 @@
             // 
             this.nameLbl.AutoSize = true;
             this.nameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.nameLbl.Location = new System.Drawing.Point(865, 136);
+            this.nameLbl.Location = new System.Drawing.Point(866, 135);
             this.nameLbl.Name = "nameLbl";
             this.nameLbl.Size = new System.Drawing.Size(41, 22);
             this.nameLbl.TabIndex = 81;
@@ -265,7 +265,7 @@
             // 
             this.errorLbl3.AutoSize = true;
             this.errorLbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.errorLbl3.Location = new System.Drawing.Point(572, 304);
+            this.errorLbl3.Location = new System.Drawing.Point(572, 305);
             this.errorLbl3.Name = "errorLbl3";
             this.errorLbl3.Size = new System.Drawing.Size(91, 22);
             this.errorLbl3.TabIndex = 96;
@@ -276,7 +276,7 @@
             // 
             this.errorLbl2.AutoSize = true;
             this.errorLbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.errorLbl2.Location = new System.Drawing.Point(530, 239);
+            this.errorLbl2.Location = new System.Drawing.Point(530, 238);
             this.errorLbl2.Name = "errorLbl2";
             this.errorLbl2.Size = new System.Drawing.Size(91, 22);
             this.errorLbl2.TabIndex = 95;
@@ -287,7 +287,7 @@
             // 
             this.errorLbl.AutoSize = true;
             this.errorLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.errorLbl.Location = new System.Drawing.Point(599, 170);
+            this.errorLbl.Location = new System.Drawing.Point(598, 169);
             this.errorLbl.Name = "errorLbl";
             this.errorLbl.Size = new System.Drawing.Size(80, 22);
             this.errorLbl.TabIndex = 94;
@@ -301,8 +301,8 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(242, 547);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Location = new System.Drawing.Point(242, 548);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(432, 106);
             this.button1.TabIndex = 97;
@@ -314,7 +314,7 @@
             // 
             this.richTextBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.richTextBox1.EnableAutoDragDrop = true;
-            this.richTextBox1.Location = new System.Drawing.Point(146, 170);
+            this.richTextBox1.Location = new System.Drawing.Point(146, 169);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(256, 246);
             this.richTextBox1.TabIndex = 98;
@@ -335,7 +335,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label2.Location = new System.Drawing.Point(142, 139);
+            this.label2.Location = new System.Drawing.Point(142, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(261, 22);
             this.label2.TabIndex = 100;
@@ -344,9 +344,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::MedicalPJ.Properties.Resources.excel;
-            this.pictureBox2.Location = new System.Drawing.Point(29, 108);
+            this.pictureBox2.Location = new System.Drawing.Point(28, 108);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(90, 90);
+            this.pictureBox2.Size = new System.Drawing.Size(90, 89);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 101;
             this.pictureBox2.TabStop = false;
@@ -354,9 +354,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MedicalPJ.Properties.Resources.coollogo_com_25075506;
-            this.pictureBox1.Location = new System.Drawing.Point(161, -9);
+            this.pictureBox1.Location = new System.Drawing.Point(160, -9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(754, 116);
+            this.pictureBox1.Size = new System.Drawing.Size(754, 115);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 74;
             this.pictureBox1.TabStop = false;
@@ -365,7 +365,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1079, 666);
+            this.panel1.Size = new System.Drawing.Size(1078, 666);
             this.panel1.TabIndex = 102;
             // 
             // Form3
@@ -373,7 +373,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1079, 666);
+            this.ClientSize = new System.Drawing.Size(1078, 666);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

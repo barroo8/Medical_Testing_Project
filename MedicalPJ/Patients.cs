@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IronXL;
 
 namespace MedicalPJ
 {
@@ -24,9 +23,12 @@ namespace MedicalPJ
         public float urea;
         public float hct;//precent
         public float rbc;
-        public float lymph;//precenr
+        public float lymph;//precent
         public float neut;
         public float wbc;
+        int[] first_diagnos;
+        Question[] question_lst;
+        HashSet<string> finaldiagnosis;
         public Patient()
         {
             id = 0;
@@ -47,7 +49,11 @@ namespace MedicalPJ
             lymph = 0;
             neut = 0;
             wbc = 0;
+            
+
+
         }
+
         public void insert_values(string value, int index)
         {
             switch (index)
@@ -129,10 +135,10 @@ namespace MedicalPJ
                     break;
             }
         }
-        public int[] Diagnosis()
+        public void Diagnosis()
         //return array with diagnos [wbc,neut,lymph,RBC,hct,Urea,hb,Crtn,iron,hdl,ap]
         {
-            int[] first_diagnos = new int[11];// each one 0 - ok | 1 - high | -1 - low
+            this.first_diagnos = new int[11];// each one 0 - ok | 1 - high | -1 - low
             //wbc
             if ((age >= 18 && wbc > 11000) || (age < 18 && age >= 4 && wbc > 15500) || (age < 4 && age >= 0 && wbc > 17500))
             {
@@ -280,228 +286,216 @@ namespace MedicalPJ
             {
                 first_diagnos[10] = 0;
             }
-            return first_diagnos;
         }
         private float precentStrToFloat(string value)
         {
             return float.Parse(value) * 100;
         }
-        public Question[] questionGeneratior(int[] diagnos)
+        public void questionGeneratior()
         //  [wbc, neut, lymph, RBC, hct, Urea, hb, Crtn, iron, hdl, ap]
         //  [0,     1,     2,    3,   4,   5,   6,   7,    8,   9,  10]
         {
-            Question[] question_lst = new Question[7];
-            int j = 0;
-            if (diagnos[0] == 1)
+            question_lst = new Question[6];
+            //[הריון , דיאטת דלת חלבון , דיאטת עתירת חלבון ,מחלת ריאות , מעשן ,מחלת חום]
+            //[     0  ,    1  ,        2   ,       3            ,      4           ,   5   ]
+            if (first_diagnos[0] == 1)
             {
-                question_lst[j] = new Question("?האם קיימת מחלת חום", "wbc : +");
-                j++;
+                question_lst[0] = new Question("?האם המטופל חולה במחלת חום");
             }
-            if (diagnos[3] == 1)
+            if (first_diagnos[3] == 1 || first_diagnos[4] == 1)
             {
-                question_lst[j] = new Question("האם את.ה מעשן", "rbc : +");
-                j++;
-                question_lst[j] = new Question(" חולה במחלת ריאות", "rbc : +");
-                j++;
+                question_lst[1] = new Question("?האם המטופל/ת מעשן");
             }
-            if (diagnos[4] == 1)
+            if (first_diagnos[3] == 1) { 
+                question_lst[2] = new Question("?האם המטופל/ת חולה במחלת ריאות");
+            }
+            if (first_diagnos[5] == 1) { 
+                question_lst[3] = new Question("האם המטופל/ת בדיאטה עתירת חלבונים ");
+            }
+            if (first_diagnos[5] == -1)
             {
-                question_lst[j] = new Question("האם את.ה מעשן ", "hct : +");
-                j++;
+                question_lst[4] = new Question("האם המטופל/ת בדיאטה דלת חלבון ");
+                if (this.gender == false)
+                {
+                    question_lst[5] = new Question("?האם המטופלת בהריון");
+                }
             }
-            if (diagnos[5] == 1)
+            if (first_diagnos[10] == 1 && this.gender == false )
             {
-                question_lst[j] = new Question("האם את.ה בדיאטה עתירת חלבונים ", "urea : +");
-                j++;
+                question_lst[5] = new Question("?האם המטופלת בהריון");
             }
-            if (diagnos[5] == -1)
-            {
-                question_lst[j] = new Question("האם את.ה בדיאטה דלת חלבון ", "urea : -");
-                j++;
-                question_lst[j] = new Question("האם את בהריון ", "urea : -");
-                j++;
-            }
-            return question_lst;
         }
-        public HashSet<string> FinalDiagnosis(int[] diagnos, Question[] questions)
+        public void FinalDiagnosis()
         {
 
-            HashSet<string> finaldiagnosis = new HashSet<string>();
-            int i = 0;
+            finaldiagnosis = new HashSet<string>();
             //WBC
-            if (diagnos[0] == 1 && questions[i].getAnswer())
-            {
+            //[הריון , דיאטת דלת חלבון , דיאטת עתירת חלבון ,מחלת ריאות , מעשן ,מחלת חום]
+            //[     0  ,    1  ,        2   ,       3            ,      4           ,   5   ]
+            if (first_diagnos[0] == 1 && question_lst[0].getAnswer())
                 finaldiagnosis.Add("זיהום");
-                i++;
-            }
-            else if (diagnos[0] == 1 && questions[i].getAnswer() == false)
+            else if (first_diagnos[0] == 1 && question_lst[0].getAnswer() == false)
             {
                 finaldiagnosis.Add("מחלת דם");
                 finaldiagnosis.Add("סרטן");
-                i++;
             }
-            else if (diagnos[0] == -1)
+            else if (first_diagnos[0] == -1)
             {
                 finaldiagnosis.Add("מחלה ויראלית");
                 finaldiagnosis.Add("סרטן");
-
             }
             //Neut
-            if (diagnos[1] == 1)
-            {
+            if (first_diagnos[1] == 1)
                 finaldiagnosis.Add("זיהום");
-            }
-            else if (diagnos[1] == -1)
+            else if (first_diagnos[1] == -1)
             {
                 finaldiagnosis.Add("הפרעה ביצירת הדם");
                 finaldiagnosis.Add("זיהום");
                 finaldiagnosis.Add("סרטן");
             }
             //Lymph
-            if (diagnos[2] == 1)
-            {
+            if (first_diagnos[2] == 1)
                 finaldiagnosis.Add("הפרעה ביצירת הדם");
-            }
-            else if (diagnos[2] == -1)
+            else if (first_diagnos[2] == -1)
             {
                 finaldiagnosis.Add("זיהום");
                 finaldiagnosis.Add("סרטן");
             }
             //RBC
-            if (diagnos[3] == 1)
+            if (first_diagnos[3] == 1)
             {
                 finaldiagnosis.Add("הפרעה ביצירת הדם");
-                if (questions[i].getAnswer())
+                if (question_lst[1].getAnswer())
                 {
                     finaldiagnosis.Add("מעשנים");
-                    i++;
-                    if (questions[i].getAnswer())
+                    if (question_lst[2].getAnswer())
                     {
                         finaldiagnosis.Add("מחלת ריאות");
-                        i++;
                     }
-                    else
-                        i++;
+
                 }
                 else
                 {
-                    i++;
-                    if (questions[i].getAnswer())
-                    {
+                    if (question_lst[2].getAnswer())
                         finaldiagnosis.Add("מחלת ריאות");
-                        i++;
-                    }
-                    else
-                        i++;
                 }
             }
-            else if (diagnos[3] == -1)
+            else if (first_diagnos[3] == -1)
             {
                 finaldiagnosis.Add("אנמיה");
                 finaldiagnosis.Add("דימום");
             }
             //hct
-            if (diagnos[4] == 1 && questions[i].getAnswer())
-            {
+            if (first_diagnos[4] == 1 && question_lst[1].getAnswer())
                 finaldiagnosis.Add("מעשנים");
-                i++;
-            }
-            else if (diagnos[4] == -1)
+            else if (first_diagnos[4] == -1)
             {
                 finaldiagnosis.Add("אנמיה");
                 finaldiagnosis.Add("דימום");
             }
             //Urea
-            if (diagnos[5] == 1)
+            if (first_diagnos[5] == 1)
             {
-                if (questions[i].getAnswer())
-                {
+                if (question_lst[3].getAnswer())
                     finaldiagnosis.Add("דיאטה");
-                    i++;
-                }
                 else
                 {
-                    i++;
-                    finaldiagnosis.Add("מחלה כליה");
+                    finaldiagnosis.Add("מחלת כליה");
                     finaldiagnosis.Add("התייבשות");
                 }
             }
-            else if (diagnos[5] == -1)
+            else if (first_diagnos[5] == -1)
             {
-                if (questions[i].getAnswer())
-                {
-                    i++;
+                if (question_lst[4].getAnswer())
                     finaldiagnosis.Add("דיאטה");
-                }
                 else
                 {
-                    i++;
-                    if (questions[i].getAnswer())
-                    {
-                        i++;
-                    }
-                    else
-                    {
-                        i++;
-                        finaldiagnosis.Add("תת תזונה");
-                        finaldiagnosis.Add("מחלת כבד");
-                    }
+                    if (this.gender == false)
+                        if (!question_lst[5].getAnswer())
+                        {
+                            finaldiagnosis.Add("תת תזונה");
+                            finaldiagnosis.Add("מחלות כבד");
+                        }
                 }
             }
             //hb
-            if (diagnos[6] == -1)
+            if (first_diagnos[6] == -1)
             {
                 finaldiagnosis.Add("אנמיה");
                 finaldiagnosis.Add("הפרעה המטולוגית");
             }
             //ctrn
-            if (diagnos[7] == 1)
+            if (first_diagnos[7] == 1)
             {
                 finaldiagnosis.Add("מחלת כליה");
                 finaldiagnosis.Add("מחלות שריר");
                 finaldiagnosis.Add("צריכה מוגברת של בשר");
             }
-            else if (diagnos[7] == -1)
-            {
+            else if (first_diagnos[7] == -1)
                 finaldiagnosis.Add("תת תזונה");
-            }
             //Iron
-            if (diagnos[8] == 1)
-            {
+            if (first_diagnos[8] == 1)
                 finaldiagnosis.Add("הרעלת ברזל");
-            }
-            if (diagnos[8] == -1)
-            {
+            if (first_diagnos[8] == -1)
                 finaldiagnosis.Add("דימום");
-            }
             //HDL
-            if (diagnos[9] == -1)
+            if (first_diagnos[9] == -1)
             {
                 finaldiagnosis.Add("מחלות לב");
                 finaldiagnosis.Add("היפרליפידמיה");
                 finaldiagnosis.Add("סוכרת מבוגרים");
             }
             //ap
-            if (diagnos[10] == 1)
+            if (first_diagnos[10] == 1)
             {
-                finaldiagnosis.Add("מחלות כבד");
-                finaldiagnosis.Add("מחלות בדרכי המרה");
-                finaldiagnosis.Add("שימוש בתרופות שונות");
-                finaldiagnosis.Add("פעילות יתר של בלוטת התריס");
+                if (this.gender == false)
+                {
+                    if (question_lst[5].getAnswer() == false)
+                    {
+                        finaldiagnosis.Add("מחלות כבד");
+                        finaldiagnosis.Add("מחלות בדרכי המרה");
+                        finaldiagnosis.Add("שימוש בתרופות שונות");
+                        finaldiagnosis.Add("פעילות יתר של בלוטת התריס");
+                    }
+                }
+                else
+                {
+                    finaldiagnosis.Add("מחלות כבד");
+                    finaldiagnosis.Add("מחלות בדרכי המרה");
+                    finaldiagnosis.Add("שימוש בתרופות שונות");
+                    finaldiagnosis.Add("פעילות יתר של בלוטת התריס");
+                }
+
             }
-            else if (diagnos[10] == -1)
+            else if (first_diagnos[10] == -1)
             {
                 finaldiagnosis.Add("דיאטה");
                 finaldiagnosis.Add("חוסר בוויטמינים");
             }
-            return finaldiagnosis;
+            if (finaldiagnosis.Count() == 0)
+            {
+                finaldiagnosis.Add("הכל תקין");
+            }
+            
         }
-
         //  [wbc, neut, lymph, RBC, hct, Urea, hb, Crtn, iron, hdl, ap]
         //  [0,     1,     2,    3,   4,   5,   6,   7,    8,   9,  10]
+
+
+        public Dictionary<string, string> DictDiagnos()
+        {
+            Dictionary<string, string> dictdiagnos = new Dictionary<string, string>();
+            foreach (string j in finaldiagnosis)
+            {
+                dictdiagnos.Add(j, DiagnosisToRecommendation(j));
+            }
+            return dictdiagnos;
+        }
+        public Question[] GetQuestions() { return question_lst; }
+        public HashSet<string> GetFinalDiagnosis() { return finaldiagnosis; }
+        public int[] GetFirstDiagnosis() { return first_diagnos; }
         public float[] normolizevalues()
         {
-
             float[] normal_values = new float[11];
             normal_values[0] = (wbc - 11000) / 6500;
             normal_values[1] = (neut - 41) / 13;
@@ -514,6 +508,23 @@ namespace MedicalPJ
             normal_values[8] = (iron - 104) / 56;
             normal_values[9] = (hdl - 64.5F) / 35.5F;
             normal_values[10] = (ap - 75) / 45;
+            
+            for (int i = 0; i < 11; i++)
+            {
+                if(this.GetFirstDiagnosis()[i]==1)
+                    normal_values[i] += 4;
+                else if(this.GetFirstDiagnosis()[i] == -1)
+                    normal_values[i] -= 4;
+            }
+            float min = normal_values.Min();
+            if (min < 0)
+            {
+                min *= -1;
+                for (int i = 0; i < 11; i++)
+                {
+                    normal_values[i] += min+ 0.1F;
+                }
+            }
 
             return normal_values;
         }
@@ -550,8 +561,8 @@ namespace MedicalPJ
                 case "מחלת דם":
                     return "שילוב של ציקלופוספאמיד וקורטיקוסרואידים";
                 case "מחלות כבד":
-                    return " הפנייה לאבחנה ספציפית לצורך קביעת טיפולי";
-                case "מחלה כליה":
+                    return "הפנייה לאבחנה ספציפית לצורך קביעת טיפולי";
+                case "מחלת כליה":
                     return "איזון את רמות הסוכר בדם";
                 case "מחסור בברזל":
                     return "שני כדורי 10 מ''ג של" + " B12 " + "ביום למשך חודש";
@@ -562,17 +573,19 @@ namespace MedicalPJ
                 case "מחלת ריאות":
                     return "להפסיק לעשן / הפנייה לצילום רנטגן של הריאות";
                 case "פעילות יתר של בלוטת התריס":
-                    return "Propylthiouracil" + "להקטנת פעילות בלוטת התריס";
+                    return "Propylthiouracil " + "להקטנת פעילות בלוטת התריס";
                 case "סוכרת מבוגרים":
                     return "התאמת אינסולין למטופל";
                 case "סרטן":
-                    return " אנטרקטיניב ";
+                    return " אנטרקטיניב";
                 case "צריכה מוגברת של בשר":
                     return "לתאם פגישה עם תזונאי";
                 case "שימוש בתרופות שונות":
                     return "פנייה לרופא המשפחה לצורך בדיקת התאמה בין התרופות";
                 case "תת תזונה":
                     return "לתאם פגישה עם תזונאי";
+                case "הכל תקין":
+                    return "תהיה בריא";
                 default:
                     return "טעות";
             }

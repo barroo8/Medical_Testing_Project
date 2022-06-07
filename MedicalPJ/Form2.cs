@@ -17,7 +17,8 @@ namespace MedicalPJ
     public partial class Form2 : Form
     {
         private List<TextBox> textBoxes = new List<TextBox>();
-        public static Patient alex = new Patient();
+        int raw_index = Dashboard.raw_index;
+        
         public Form2()
         {
             InitializeComponent();
@@ -43,12 +44,14 @@ namespace MedicalPJ
             errorLbl3.ForeColor = Color.Red;
             errorLbl4.ForeColor = Color.Red;
             errorLbl5.ForeColor = Color.Red;
+
         }
 
         public void button1_Click(object sender, EventArgs e)
         {
+            //------------------------------check if the form filled correctly -------------------------------------
             if ((maleRBtn.Checked == false && femaleRBtn.Checked == false) || (mizrahiRBtn.Checked == false &&
-                nomizrahiRBtn.Checked == false) || (ethipoiRBtn.Checked == false && noethiopiRBtn.Checked == false) || 
+                nomizrahiRBtn.Checked == false) || (ethipoiRBtn.Checked == false && noethiopiRBtn.Checked == false) ||
                 nameTxtBox.Text == "" || lastnameTxtBox.Text == "" || ageTxtBox.Text == "")
             {
                 errorLbl4.Visible = true;
@@ -66,7 +69,7 @@ namespace MedicalPJ
 
             bool flag = false;
 
-            foreach(TextBox t in textBoxes)
+            foreach (TextBox t in textBoxes)
             {
 
                 if (t.Text == "")
@@ -90,10 +93,10 @@ namespace MedicalPJ
                 {
                     if (c == 46)
                     {
-                        isDot+=1;
+                        isDot += 1;
                     }
 
-                    if ((c < 47 && c!=46) || isDot > 1 || c > 58)
+                    if ((c < 47 && c != 46) || isDot > 1 || c > 58)
                     {
                         flag = true;
                         t.Text = "";
@@ -184,24 +187,30 @@ namespace MedicalPJ
             {
 
             }
-
+            //-------------------------------------------------------------------------------------------
+            //------------------------------insert values into the excel fille --------------------------
             WorkBook workbook = WorkBook.Load("Patients.xlsx");
             var sheet = workbook.GetWorkSheet("sheet");
-            int i = 0;
-            
-            int raw_index = 1;
             string cell_val = "1";
-            while(cell_val!= "")
+            int i = 0;
+            int id=0;
+            raw_index = 1;
+            //find where is the next row and the id of this meeting
+            while (cell_val != "")
             {
                 raw_index++;
-                cell_val = sheet["A" + raw_index.ToString()].ToString();
+                cell_val = sheet["S" + raw_index.ToString()].ToString();
+                if(sheet["A" + raw_index.ToString()].ToString()!= "")
+                    id = int.Parse(sheet["A" + raw_index.ToString()].ToString());
             }
-            //-------------------------------------------------
-            sheet["A" + raw_index.ToString()].Value = raw_index - 1;
+            Dashboard.raw_index = raw_index;
+            id++;
+            //insert values into the excel fille
+            sheet["A" + raw_index.ToString()].Value = id;
             sheet["B" + raw_index.ToString()].Value = nameTxtBox.Text;
             sheet["C" + raw_index.ToString()].Value = lastnameTxtBox.Text;
             sheet["D" + raw_index.ToString()].Value = float.Parse(ageTxtBox.Text);
-            if(maleRBtn.Checked == true)
+            if (maleRBtn.Checked == true)
             {
                 sheet["E" + raw_index.ToString()].Value = true;
             }
@@ -226,10 +235,10 @@ namespace MedicalPJ
                 sheet["G" + raw_index.ToString()].Value = false;
             }
             sheet["H" + raw_index.ToString()].Value = float.Parse(wbcTxtBox.Text);
-            sheet["I" + raw_index.ToString()].DecimalValue = decimal.Parse(neutTxtBox.Text)/100;
-            sheet["J" + raw_index.ToString()].Value = float.Parse(lymphTxtBox.Text)/100;
+            sheet["I" + raw_index.ToString()].DecimalValue = decimal.Parse(neutTxtBox.Text) / 100;
+            sheet["J" + raw_index.ToString()].Value = float.Parse(lymphTxtBox.Text) / 100;
             sheet["K" + raw_index.ToString()].Value = float.Parse(rbcTxtBox.Text);
-            sheet["L" + raw_index.ToString()].Value = float.Parse(hctTxtBox.Text)/100;
+            sheet["L" + raw_index.ToString()].Value = float.Parse(hctTxtBox.Text) / 100;
             sheet["M" + raw_index.ToString()].Value = float.Parse(ureaTxtBox.Text);
             sheet["N" + raw_index.ToString()].Value = float.Parse(hbTxtBox.Text);
             sheet["O" + raw_index.ToString()].Value = float.Parse(crtnTxtBox.Text);
@@ -240,21 +249,55 @@ namespace MedicalPJ
             sheet["J" + raw_index.ToString()].FormatString = "0.00%";
             sheet["L" + raw_index.ToString()].FormatString = "0.00%";
 
-            workbook.SaveAs("Patients.xlsx");
-
-            //excel to object
-            foreach (var cell in sheet["A"+ raw_index.ToString() + ":R"+ raw_index.ToString()])
-            ////a2;k2
+            workbook.SaveAs("Patients.xlsx");//save fille
+            //-------------------------------------------------------------------------------------------
+            //excel to patient object
+            foreach (var cell in sheet["A" + raw_index.ToString() + ":R" + raw_index.ToString()])
             {
-
-                alex.insert_values(cell.Text, i);
+                Dashboard.alex.insert_values(cell.Text, i);
                 i++;
             }
+            //------------------------------------------questions --------------------------------------
+            bool question = false;
+            Dashboard.alex.Diagnosis();
+            Dashboard.alex.questionGeneratior();
+            Question[] questlist = Dashboard.alex.GetQuestions();
+            for (int j = 0; j < 6; j++)
+            {
+                if (questlist[j] != null)
+                {
+                    QuestionForm qf = new QuestionForm();
+                    qf.Show();
+                    qf.FormClosed += delegate
+                    {
+                        nextpage();
+                    };
+                    question = true;
+                    break;
+                }
+            }
+            if (question == false)
+            {
+                Dashboard.alex.FinalDiagnosis();
+                HashSet<string> finaldiagnosis = Dashboard.alex.GetFinalDiagnosis();
+                foreach (string j in finaldiagnosis)
+                {
+                    sheet["S" + Dashboard.raw_index.ToString()].Value = j;
+                    sheet["T" + Dashboard.raw_index.ToString()].Value = Dashboard.alex.DiagnosisToRecommendation(j);
+                    Dashboard.raw_index++;
+                }
+                workbook.SaveAs("Patients.xlsx");
+                nextpage();
+            }
+        }
+
+
+        public void nextpage()
+        {
             ChartsForm cf = new ChartsForm();
             loadform(cf);
             panel1.BringToFront();
         }
-
         public void loadform(object Form)
         {
             if (this.panel1.Controls.Count > 0)
@@ -268,43 +311,6 @@ namespace MedicalPJ
         }
 
 
-        private string analsys(int num)
-        {
-            if (num == 0)
-                return "תקין";
-            else if (num == 1)
-                return "גבוה";
-            else
-                return "נמוך";
-        }
-        private void answers(Question[] lst)
-        {
-
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
-            nameLbl.Text = "shpih";
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox12_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox8_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void nameTxtBox_Leave(object sender, EventArgs e)
         {
@@ -378,44 +384,5 @@ namespace MedicalPJ
         {
             errorLbl3.Visible = false;
         }
-
-
-
-
-
-
-        /*        private void button2_Click(object sender, EventArgs e)
-                {
-                    Question[] question_lst = alex.questionGeneratior(alex.Diagnosis());
-
-                    button2.Text = "הגש";
-                    if (question_lst[countclick] == null)
-                    {
-                        button2.Text = "לעמוד הבא";
-                        button2.Enabled = false;
-
-                    }
-                    else if (countclick == 0)
-                    {
-                        label40.Text = question_lst[countclick].getQuestion();
-                        countclick++;
-                    }
-                    else
-                    {
-                        if (checkBox8.Checked == true)
-                        {
-                            question_lst[countclick - 1].setAnswer(true);
-                            checkBox8.Checked = false;
-                            countclick++;
-                        }
-                        if (checkBox7.Checked == true)
-                        {
-                            question_lst[countclick - 1].setAnswer(false);
-                            checkBox7.Checked = false;
-                            countclick++;
-                        }
-                        label40.Text = question_lst[countclick-1].getQuestion();
-                    }
-                }*/
     }
 }

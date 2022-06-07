@@ -9,16 +9,14 @@ namespace MedicalPJ
     public class Question
     {
         string question;
-        string symptom;
         bool answer;
         public Question()
         {
             question = "";
         }
-        public Question(string new_question, string new_symptom)
+        public Question(string new_question)
         {
             question = new_question;
-            symptom = new_symptom;
         }
         public void setAnswer(bool new_answer)
         {

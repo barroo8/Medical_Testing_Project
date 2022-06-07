@@ -12,6 +12,9 @@ namespace MedicalPJ
 {
     public partial class Dashboard : Form
     {
+        public static Patient alex = new Patient();
+        public static int raw_index = 1;
+
         public Dashboard()
         {
             InitializeComponent();
